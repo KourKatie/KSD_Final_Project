@@ -15,14 +15,14 @@
 <div id="parent">
 <%-- the action "signinresponse" can be replaced with a link so when someone clicks the
 button it takes them to a new page. Having the just the name of the page works--%>
-<form id = "form_login" action = "/selectlocation" method = "post" >
+<form id = "form_login" action = "/signinresponse" method = "post" >
 
 User Name: <input align="left" type = "text"  name = "username">
 Password: <input type = password name = "password">
 
     <%--<input type = "submit" name = "signin" value = "Sign In">--%>
 
-    <button class="button" style="vertical-align:middle"><span><a href = "/selectlocation">Sign In</a></span></button>
+    <input type="submit" value="submit" onclick="signinresponse">
 
 </form>
 </div>

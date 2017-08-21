@@ -40,7 +40,6 @@ function validateForm() {
 
         <h1>Enter Account Details</h1>
         <%--Adding fields to the form--%>
-        User ID: <input type = "text" name = "UserId" required> <br />
         First Name: <input type = "text" name = "FirstName" required> <br />
         Last Name:  <input type = "text"  name = "LastName" required> <br />
         Email: <input type = "email"  name = "email" required> <br />

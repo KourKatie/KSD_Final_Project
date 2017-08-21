@@ -35,7 +35,7 @@ public class HomeController {
     @RequestMapping("/signinresponse")
     public ModelAndView signinresponse(@RequestParam("username") String username,
                                        @RequestParam("password") String password) {
-        ModelAndView mv = new ModelAndView("signinresponse");
+        ModelAndView mv = new ModelAndView("/signinresponse");
         mv.addObject("username", username);
         mv.addObject("password", password);
         return mv;
@@ -44,14 +44,13 @@ public class HomeController {
     @RequestMapping("/selectlocation")
     public ModelAndView inventory() {
         return new
-                ModelAndView("/WEB-INF/views/selectlocation.jsp", "inventory", "Coffee Selection");
+                ModelAndView("/selectlocation", "inventory", "Coffee Selection");
     }
 
 
 
     @RequestMapping(value = "/addCustomer")
     public ModelAndView addCustomer (
-            @RequestParam("UserId") String UserId,
             @RequestParam("FirstName") String FirstName,
             @RequestParam("LastName") String LastName,
             @RequestParam("email") String email,
@@ -65,7 +64,7 @@ public class HomeController {
     ) {
 
         //add the info to DB through DAO
-        boolean result = DAO.addCustomer(UserId, FirstName, LastName, email, phoneNumber, cellProvider, Company, gender, password, vehicleMPG, profilePic);
+        boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber, cellProvider, Company, gender, password, vehicleMPG, profilePic);
         //best to check the result
         if (result == false) {
             //still have to write this view
@@ -73,7 +72,6 @@ public class HomeController {
         }
 
         ModelAndView mv = new ModelAndView("addResult");
-        mv.addObject("UserId", UserId);
         mv.addObject("FirstName", FirstName);
         mv.addObject("LastName", LastName);
         mv.addObject("email", email);
@@ -113,6 +111,11 @@ public class HomeController {
         return new ModelAndView("getCustomersList","cdata",customerList);
     }
 
+    @RequestMapping(value="/requestpage")
+    public ModelAndView requestpage() {
+        return new ModelAndView("/requestpage","requests", "View Request");
+    }
+
 
     @RequestMapping("/deleteCustomer")
     public String deleteCustomer (
@@ -130,6 +133,36 @@ public class HomeController {
         //and add to it
         model.addAttribute("userID", userID);
         return "deleted";
+    }
+    @RequestMapping(value = "/addrequest")
+    public ModelAndView addrequest (
+            @RequestParam("UserID") String UserID,
+            @RequestParam("departure") String departure,
+            @RequestParam("arrival") String arrival,
+            @RequestParam("time") String time,
+            @RequestParam("date") String date,
+            @RequestParam("frequency") String frequency,
+            @RequestParam("message") String message
+    ) {
+
+        //add the info to DB through DAO
+        boolean result = DAO.addrequest(UserID, departure , arrival, time, date, frequency, message);
+        //best to check the result
+        if (result == false) {
+            //still have to write this view
+            return new ModelAndView("error", "errmsg", "customer add failed");
+        }
+
+        ModelAndView mv = new ModelAndView("/viewRequest");
+        mv.addObject("UserID", UserID);
+        mv.addObject("departure", departure);
+        mv.addObject("arrival", arrival);
+        mv.addObject("time", time);
+        mv.addObject("date", date);
+        mv.addObject("frequency", frequency);
+        mv.addObject("message", message);
+
+        return mv;
     }
 
 }

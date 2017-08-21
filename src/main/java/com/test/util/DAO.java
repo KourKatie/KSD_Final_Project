@@ -27,9 +27,9 @@ public class DAO {
 
             Connection mysqlConnection;
             mysqlConnection = DriverManager.getConnection(
-                    DBCredentials.DB_ADDRESS,
-                    DBCredentials.USERNAME,
-                    DBCredentials.PASSWORD);
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
 
             // Next step is to create db statement
             // the select statement can be changed to insert into, update, delete
@@ -68,7 +68,6 @@ public class DAO {
         }
 
     public static boolean addCustomer(
-            String UserId,
             String FirstName,
             String LastName,
             String email,
@@ -87,15 +86,14 @@ public class DAO {
 
             Connection mysqlConnection;
             mysqlConnection = DriverManager.getConnection(
-                    DBCredentials.DB_ADDRESS,
-                    DBCredentials.USERNAME,
-                    DBCredentials.PASSWORD);
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
 
             String addCustomerCommand = "INSERT INTO userinfo " +
-                    "(UserId, FirstName, LastName, email, phoneNumber, cellProvider, Company, " +
+                    "(FirstName, LastName, email, phoneNumber, cellProvider, Company, " +
                     "gender, password, vehicleMPG, profilePic) " +
                     "VALUES ('" +
-                    UserId + "', '" +
                     FirstName + "', '" +
                     LastName + "', '" +
                     email + "', '" +
@@ -129,9 +127,9 @@ public class DAO {
 
             Connection mysqlConnection;
             mysqlConnection = DriverManager.getConnection(
-                    DBCredentials.DB_ADDRESS,
-                    DBCredentials.USERNAME,
-                    DBCredentials.PASSWORD);
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
 
             String deleteCustomerCommand = "DELETE FROM customers " +
                     "WHERE userID = '" +
@@ -157,9 +155,9 @@ public class DAO {
 
             Connection mysqlConnection;
             mysqlConnection = DriverManager.getConnection(
-                    DBCredentials.DB_ADDRESS,
-                    DBCredentials.USERNAME,
-                    DBCredentials.PASSWORD);
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
 
             String readCustomersCommand = "select userID, fname, lname, username from customers";
             Statement readCustomers = mysqlConnection.createStatement();
@@ -184,6 +182,51 @@ public class DAO {
         } catch (Exception ex) {
             ex.printStackTrace();
             return null; //null result indicates an issue
+        }
+    }
+    public static boolean addrequest(
+            String UserId,
+            String departure,
+            String arrival,
+            String time,
+            String date,
+            String frequency,
+            String message
+
+    ) {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            Connection mysqlConnection;
+            mysqlConnection = DriverManager.getConnection(
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
+
+            String addRequestCommand = "INSERT INTO request " +
+                    "(UserId, departure, arrival, time, date, frequency, message)" +
+                    "VALUES ('" +
+                    UserId + "', '" +
+                    departure + "', '" +
+                    arrival + "', '" +
+                    time + "', '" +
+                    date + "', '" +
+                    frequency + "', '" +
+                    message + "')";
+
+            System.out.println("SQL Query " + addRequestCommand);
+
+            Statement st = mysqlConnection.createStatement();// creates the statement
+
+            int result = st.executeUpdate(addRequestCommand);// executes the statement
+            // array list of customers
+
+            //if (result == 1)
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false; //null result indicates an issue
         }
     }
 }
