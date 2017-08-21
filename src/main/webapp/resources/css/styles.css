@@ -1,0 +1,56 @@
+body {
+    /*background-image: url("/resources/images/background.jpg");*/
+    background-size: cover;
+    text-align: center;
+}
+
+div {
+    display: table; /* shrink wrap the contents */
+    margin: 0 auto; /* center via left/right margins */
+    width: 25%;
+    height: 25%;
+}
+
+#button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: ivory;
+    color: #fff;
+    background-color: #4CAF50;
+    border: thick;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+#button:hover {background-color: #3e8e41}
+
+#button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#parent {
+    display: table;
+    width: 100%;
+    margin: auto;
+}
+#form_login {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+fieldset {
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
