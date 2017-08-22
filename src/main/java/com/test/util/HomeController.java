@@ -19,6 +19,12 @@ public class HomeController {
                 "Please choose from the below options.");
     }
 
+    @RequestMapping("/profile")
+    public ModelAndView profile ()
+    {
+        return new ModelAndView("profile", "userProfile", "here's your profile");
+    }
+
     // Form page
     @RequestMapping("/userform")
     public ModelAndView userform() {

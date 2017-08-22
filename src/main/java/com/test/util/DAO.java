@@ -1,5 +1,7 @@
 package com.test.util;
 
+import org.jasypt.util.password.StrongPasswordEncryptor;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -89,6 +91,11 @@ public class DAO {
                     DAOCredentials.DB_ADDRESS,
                     DAOCredentials.USERNAME,
                     DAOCredentials.PASSWORD);
+            //Instantiate Password Encryptor
+
+            StrongPasswordEncryptor enc = new StrongPasswordEncryptor();
+
+            String passEncrypted = enc.encryptPassword(password);
 
             String addCustomerCommand = "INSERT INTO userinfo " +
                     "(FirstName, LastName, email, phoneNumber, cellProvider, Company, " +
@@ -101,8 +108,10 @@ public class DAO {
                     cellProvider + "', '" +
                     Company + "', '" +
                     gender + "', '" +
-                    password + "', '" +
+                    passEncrypted + "', '" +
                     vehicleMPG + "')";
+
+            boolean match = enc.checkPassword(password,passEncrypted);
 
             System.out.println("SQL Query " + addCustomerCommand);
 
@@ -118,6 +127,9 @@ public class DAO {
             return false; //null result indicates an issue
         }
     }
+
+
+
 
     public static boolean deleteCustomer(String userID) {
 
