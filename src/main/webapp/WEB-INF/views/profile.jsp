@@ -29,9 +29,6 @@ Vehicle MPG: ${vehicleMPG}<br/>
 
 
 <button type="button" onclick="alert('You have updated your profile')">Update</button>
-
-
-
 <button type ="button" onclick="alert('You have deleted your profile')">Delete</button>
 
 <br/>

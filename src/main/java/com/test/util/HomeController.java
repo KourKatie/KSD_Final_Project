@@ -13,51 +13,18 @@ public class HomeController {
 
     // Welcome Page
     @RequestMapping("/")
-    public ModelAndView helloWorld() {
+    public ModelAndView welcome() {
         return new
                 ModelAndView("welcome", "message",
                 "Please choose from the below options.");
     }
 
-<<<<<<< HEAD
     @RequestMapping("/profile")
     public ModelAndView profile ()
     {
         return new ModelAndView("profile", "userProfile", "here's your profile");
     }
 
-    // Form page
-    @RequestMapping("/userform")
-    public ModelAndView userform() {
-        return new
-                ModelAndView("form", "inst", "Please enter info: ");
-    }
-
-    @RequestMapping("/signin")
-    public ModelAndView signin() {
-        return new
-                ModelAndView("signin", "signin", "Your inputs: ");
-    }
-
-    @RequestMapping("/signinresponse")
-    public ModelAndView signinresponse(@RequestParam("username") String username,
-                                       @RequestParam("password") String password) {
-        ModelAndView mv = new ModelAndView("/signinresponse");
-        mv.addObject("username", username);
-        mv.addObject("password", password);
-        return mv;
-    }
-
-    @RequestMapping("/selectlocation")
-    public ModelAndView inventory() {
-        return new
-                ModelAndView("/selectlocation", "inventory", "Coffee Selection");
-    }
-
-
-
-=======
->>>>>>> ae76c388f6900c2a084005ef0d37f2c2f74795dc
     @RequestMapping(value = "/addCustomer")
     public ModelAndView addCustomer (
             @RequestParam("FirstName") String FirstName,
@@ -102,23 +69,6 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/deleteCustomer")
-    public String deleteCustomer (
-            Model model,
-            @RequestParam("userID") String userID) {
-        //make it happen with the DB
-        boolean result = DAO.deleteCustomer(userID);
-
-        if (result == false) {
-            model.addAttribute("errmsg", "Delete failed");
-            return "error";
-        }
-        //adding info without a ModelAndView
-        //get the model as a argument above
-        //and add to it
-        model.addAttribute("userID", userID);
-        return "deleted";
-    }
     @RequestMapping(value = "/addrequest")
     public ModelAndView addrequest (
             @RequestParam("UserID") String UserID,
