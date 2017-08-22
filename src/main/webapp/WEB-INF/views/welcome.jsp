@@ -1,12 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Delwar
-  Date: 8/11/2017
-  Time: 10:25 AM
-  To change this template use File | Settings | File Templates.
-
-  JSP - Java Server Page
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -86,18 +77,40 @@
 
             <input type="checkbox" checked="checked"> Remember me
             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-        </div> </form>
-    <div class="clearfix">
-            <form action = "/requestpage">
 
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="submit" class="signupbtn">Sign Up</button>
 
-            </form>
-    </div>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Sign Up</button>
+
         </div>
+    </form>
+</div>
+
+
+<form name="loginform" onSubmit="return validateForm();" action="/requestpage" method="post">
+    <label>Email</label>
+    <input type="text" name="email" placeholder="Email">
+    <label>Password</label>
+    <input type="password" name="pword" placeholder="password">
+    <input type="submit" value="Login"/>
+</form>
+
+<script>
+    function validateForm() {
+        var un = document.loginform.email.value;
+        var pw = document.loginform.pword.value;
+        var username = "delwar@yahoo.com";
+        var password = "pass123";
+        if ((un === username) && (pw === password)) {
+            return true;
+        }
+        else {
+            alert ("Login was unsuccessful, please check your username and password");
+            return false;
+        }
+    }
+</script>
 
 </body>
 
-</body>
 </html>
