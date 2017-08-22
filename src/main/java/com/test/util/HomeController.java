@@ -19,6 +19,7 @@ public class HomeController {
                 "Please choose from the below options.");
     }
 
+<<<<<<< HEAD
     @RequestMapping("/profile")
     public ModelAndView profile ()
     {
@@ -55,6 +56,8 @@ public class HomeController {
 
 
 
+=======
+>>>>>>> ae76c388f6900c2a084005ef0d37f2c2f74795dc
     @RequestMapping(value = "/addCustomer")
     public ModelAndView addCustomer (
             @RequestParam("FirstName") String FirstName,
@@ -77,7 +80,7 @@ public class HomeController {
             return new ModelAndView("error", "errmsg", "customer add failed");
         }
 
-        ModelAndView mv = new ModelAndView("addResult");
+        ModelAndView mv = new ModelAndView("requestpage");
         mv.addObject("FirstName", FirstName);
         mv.addObject("LastName", LastName);
         mv.addObject("email", email);
@@ -91,31 +94,7 @@ public class HomeController {
         return mv;
     }
 
-    @RequestMapping(value = "getAllItems")
-    public ModelAndView getAllItems() {
 
-        ArrayList<items> itemsList = DAO.getItemsList();
-
-        //TODO: make error.jsp
-        if (itemsList == null) {
-            return new ModelAndView("error", "errmsg", "Items list is null");
-        }
-
-        return new ModelAndView("getAllItems", "iList", itemsList);
-    }
-
-    @RequestMapping(value = "getCustomersList")
-    public ModelAndView getCustomersList() {
-
-        ArrayList<customers> customerList = DAO.getCustomersList();
-
-        //TODO: make error.jsp
-        if (customerList == null) {
-            return new ModelAndView("error", "errmsg", "Customer list is null");
-        }
-
-        return new ModelAndView("getCustomersList","cdata",customerList);
-    }
 
     @RequestMapping(value="/requestpage")
     public ModelAndView requestpage() {
@@ -170,6 +149,7 @@ public class HomeController {
 
         return mv;
     }
-
 }
+
+
 

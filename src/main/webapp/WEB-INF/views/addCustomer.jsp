@@ -23,7 +23,6 @@ Added customer:<br>
 <li>${gender}</li>
 <li>${password}</li>
 <li>${vehicleMPG}</li>
-<li>${profilePic}</li>
 
 <a href = "userform">Create Account</a>
 
