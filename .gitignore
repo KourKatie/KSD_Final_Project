@@ -22,3 +22,5 @@ target/
 hibernate.cfg.xml
 
 DBCredentials.java
+
+DAOCredentials.java

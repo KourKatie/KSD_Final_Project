@@ -5,7 +5,7 @@ package com.test.util;
  */
 public class DAOCredentials {
         public static final String DB_ADDRESS = "jdbc:mysql://localhost:3306/ride";
-        public static final String USERNAME = "root";
-        public static final String PASSWORD = "Michigan33";
+        public static final String USERNAME = "KaeTheDev";
+        public static final String PASSWORD = "GodsWill17";
     }
 

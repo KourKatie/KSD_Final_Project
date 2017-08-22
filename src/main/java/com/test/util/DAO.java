@@ -76,8 +76,8 @@ public class DAO {
             String Company,
             String gender,
             String password,
-            Integer vehicleMPG,
-            String profilePic
+            Integer vehicleMPG
+
 
     ) {
 
@@ -92,7 +92,7 @@ public class DAO {
 
             String addCustomerCommand = "INSERT INTO userinfo " +
                     "(FirstName, LastName, email, phoneNumber, cellProvider, Company, " +
-                    "gender, password, vehicleMPG, profilePic) " +
+                    "gender, password, vehicleMPG) " +
                     "VALUES ('" +
                     FirstName + "', '" +
                     LastName + "', '" +
@@ -102,8 +102,7 @@ public class DAO {
                     Company + "', '" +
                     gender + "', '" +
                     password + "', '" +
-                    vehicleMPG + "', '" +
-                    profilePic + "')";
+                    vehicleMPG + "')'";
 
             System.out.println("SQL Query " + addCustomerCommand);
 

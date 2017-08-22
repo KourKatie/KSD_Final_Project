@@ -59,12 +59,12 @@ public class HomeController {
             @RequestParam("Company") String Company,
             @RequestParam("gender") String gender,
             @RequestParam("password") String password,
-            @RequestParam("vehicleMPG") Integer vehicleMPG,
-            @RequestParam("profilePic") String profilePic
+            @RequestParam("vehicleMPG") Integer vehicleMPG
+
     ) {
 
         //add the info to DB through DAO
-        boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber, cellProvider, Company, gender, password, vehicleMPG, profilePic);
+        boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber, cellProvider, Company, gender, password, vehicleMPG);
         //best to check the result
         if (result == false) {
             //still have to write this view
@@ -81,7 +81,7 @@ public class HomeController {
         mv.addObject("gender", gender);
         mv.addObject("password", password);
         mv.addObject("vehicleMPG", vehicleMPG);
-        mv.addObject("profilePic", profilePic);
+
         return mv;
     }
 
