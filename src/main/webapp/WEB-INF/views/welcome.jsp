@@ -11,14 +11,14 @@
 <html>
 <head>
     <title>Welcome!</title>
-    <link rel="stylesheet" href="/resources/css/styles.css" >
+    <%--<link rel="stylesheet" href="/resources/css/styles.css" >--%>
 
 </head>
 
 <%-- Creates a link to the form page--%>
 
-<body background="${pageContext.request.contextPath}/resources/images/bike.jpg">
-
+<%--<body background="${pageContext.request.contextPath}/resources/images/bike.jpg">--%>
+<body>
 <br />
 <h1> Company Name TBD </h1>
 
@@ -86,15 +86,17 @@
 
             <input type="checkbox" checked="checked"> Remember me
             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+        </div> </form>
+    <div class="clearfix">
             <form action = "/requestpage">
-            <div class="clearfix">
+
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                 <button type="submit" class="signupbtn">Sign Up</button>
-            </div>
+
             </form>
+    </div>
         </div>
-    </form>
-</div>
+
 </body>
 
 </body>

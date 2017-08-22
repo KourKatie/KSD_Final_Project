@@ -102,7 +102,7 @@ public class DAO {
                     Company + "', '" +
                     gender + "', '" +
                     password + "', '" +
-                    vehicleMPG + "')'";
+                    vehicleMPG + "')";
 
             System.out.println("SQL Query " + addCustomerCommand);
 
