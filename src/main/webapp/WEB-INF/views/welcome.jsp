@@ -11,7 +11,7 @@
 <%--<body background="${pageContext.request.contextPath}/resources/images/bike.jpg">--%>
 <body>
 <br />
-<h1> Company Name TBD </h1>
+<h1>MoGo With Me</h1>
 
 
 

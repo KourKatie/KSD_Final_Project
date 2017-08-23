@@ -12,28 +12,39 @@
     <title>Matches</title>
 </head>
 <body>
-<h1>Company Name</h1>
+<h1>MoGo With Me</h1>
 <p></p>
-Matches for ${date} in the ${time} deaparting from ${departure} station and arriving at ${arrival} station.
-<table>
+<div align="center">
+Matches for <strong>${date}</strong> in the <strong>${time}</strong> deaparting from <strong>${departure}</strong>
+station and arriving at <strong>${arrival}</strong> station.
+</div>
+<p></p>
+<table align="center">
 <tr>
-<th>Name</th>
-    <th>First Name</th>
-    <th>Gender</th>
     <th>Company</th>
-    <th>Frequency</th>
+    <th>Name</th>
+    <th>gender</th>
+    <th>Departure Station</th>
+    <th>Arrival Station </th>
+    <th> Date </th>
     <th>Message</th>
     <th>Request</th>
 </tr>
 <c:forEach items="${mdata}" var="item">
     <tr>
-        <td> ${item.firstname} ${item.gender} ${item.company} ${item.frequency} ${message} </td>
+        <td> ${item.firstName} </td>
+        <td> ${item.gender} </td>
+        <td> ${item.company} </td>
+        <td> ${item.departure}</td>
+        <td> ${item.arrival} </td>
+        <td> ${item.date} </td>
+        <td> ${item.message} </td>
+        <td>Button Here <br> </td>
     </tr>
-    <form action="getMatches" method="post">
-        <input type="hidden" name="userID"
-               value="${item.userID}">
-        <input type="submit" value="Remove Customer">
-    </form>
+    <%--<form action="getMatches" method="post">--%>
+        <%--<input type="hidden" name="userID"--%>
+               <%--value="${item.userID}">--%>
+    <%--</form>--%>
     </c:forEach>
 </table>
 </body>

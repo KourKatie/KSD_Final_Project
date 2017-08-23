@@ -20,13 +20,12 @@ public class HomeController {
     }
 
     @RequestMapping("/profile")
-    public ModelAndView profile ()
-    {
+    public ModelAndView profile() {
         return new ModelAndView("profile", "userProfile", "here's your profile");
     }
 
     @RequestMapping(value = "/addCustomer")
-    public ModelAndView addCustomer (
+    public ModelAndView addCustomer(
             @RequestParam("FirstName") String FirstName,
             @RequestParam("LastName") String LastName,
             @RequestParam("email") String email,
@@ -61,13 +60,13 @@ public class HomeController {
         return mv;
     }
 
-    @RequestMapping(value="/requestpage")
+    @RequestMapping(value = "/requestpage")
     public ModelAndView requestpage() {
-        return new ModelAndView("/requestpage","requests", "View Request");
+        return new ModelAndView("/requestpage", "requests", "View Request");
     }
 
     @RequestMapping(value = "/addRequest")
-    public ModelAndView addRequest (
+    public ModelAndView addRequest(
             @RequestParam("UserID") String UserID,
             @RequestParam("departure") String departure,
             @RequestParam("arrival") String arrival,
@@ -78,14 +77,21 @@ public class HomeController {
     ) {
 
         //add the info to DB through DAO
-        boolean result = DAO.addrequest(UserID, departure , arrival, time, date, frequency, message);
+        boolean result = DAO.addrequest(UserID, departure, arrival, time, date, frequency, message);
         //best to check the result
         if (result == false) {
             //still have to write this view
             return new ModelAndView("error", "errmsg", "customer add failed");
         }
 
-        ModelAndView mv = new ModelAndView("matches");
+        ArrayList<matches> matchList = DAO.getMatches();
+
+        if (result == false) {
+
+            return new ModelAndView("zeroMatches","sorrymsg","Sorry! No matches were found");
+        }
+
+        ModelAndView mv = new ModelAndView("matches", "mdata", matchList);
         mv.addObject("UserID", UserID);
         mv.addObject("departure", departure);
         mv.addObject("arrival", arrival);
@@ -97,25 +103,7 @@ public class HomeController {
         return mv;
     }
 
-    @RequestMapping(value = "getMatches")
-    public ModelAndView getMatchList() {
-
-            ArrayList<matches> matchList = DAO.getMatches();
-
-            //TODO: make error.jsp
-            if (matchList == null) {
-                return new ModelAndView("matches", "errmsg", "Sorry! We have no matches for you at this time");
-            }
-
-            return new ModelAndView("getMatchList", "mdata", matchList);
-        }
-
-        @RequestMapping(value="/matches")
-        public ModelAndView matches() {
-
-        return new ModelAndView("matches", "matches","Your matches");
-        }
-    }
+}
 
 
 

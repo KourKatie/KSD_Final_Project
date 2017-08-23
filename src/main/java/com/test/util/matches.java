@@ -5,19 +5,24 @@ package com.test.util;
  */
 public class matches {
 
-    private String gender;
-    private String Company;
-    private String frequency;
-    private String message;
 
-    public matches(String firstName, String gender, String company, String frequency, String message) {
-        FirstName = firstName;
-        this.gender = gender;
-        Company = company;
-        this.frequency = frequency;
-        this.message = message;
-    }
     private String FirstName;
+    private String Company;
+    private String message;
+    private String departure;
+    private String arrival;
+    private String date;
+    private String gender;
+
+    public matches(String firstName, String company, String message, String departure, String arrival, String date, String gender) {
+        FirstName = firstName;
+        Company = company;
+        this.message = message;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.date = date;
+        this.gender = gender;
+    }
 
     public String getFirstName() {
         return FirstName;
@@ -25,14 +30,6 @@ public class matches {
 
     public void setFirstName(String firstName) {
         FirstName = firstName;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
     }
 
     public String getCompany() {
@@ -43,19 +40,43 @@ public class matches {
         Company = company;
     }
 
-    public String getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(String frequency) {
-        this.frequency = frequency;
-    }
-
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(String departure) {
+        this.departure = departure;
+    }
+
+    public String getArrival() {
+        return arrival;
+    }
+
+    public void setArrival(String arrival) {
+        this.arrival = arrival;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

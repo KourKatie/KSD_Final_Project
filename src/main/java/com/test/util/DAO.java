@@ -1,6 +1,7 @@
 package com.test.util;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -113,8 +114,8 @@ public class DAO {
         }
     }
 
-    public static ArrayList<matches> getMatches() {
-
+    public static ArrayList<matches> getMatches(
+    ) {
 
         try {
             //Load driver
@@ -132,7 +133,10 @@ public class DAO {
 
             // Next step is to create db statement
             // the select statement can be changed to insert into, update, delete
-            String readMatchesCommand = "select UserID, FirstName, gender, Company  from UserInfo";
+            String readMatchesCommand = "select userinfo.FirstName, userinfo.Company, userinfo.gender, request.departure, request.arrival, " +
+                    "request.date, request.message\n" +
+                    "from userinfo\n" +
+                    "inner join request on userinfo.UserId = request.UserID";
 
             // creates a statement
             Statement readMatches = mysqlConnection.createStatement();
@@ -150,7 +154,7 @@ public class DAO {
             while (results.next()) {
                 // gets data from column 1 and column 2
                 matches temp = new matches(results.getString(1), results.getString(2), results.getString(3),
-                        results.getString(4), results.getString(5));
+                        results.getString(4), results.getString(5), results.getString(6), results.getString(7));
 
                 // added the temp customer to the arrayList
                 matchList.add(temp);
