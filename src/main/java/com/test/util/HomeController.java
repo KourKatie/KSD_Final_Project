@@ -61,16 +61,13 @@ public class HomeController {
         return mv;
     }
 
-
-
     @RequestMapping(value="/requestpage")
     public ModelAndView requestpage() {
         return new ModelAndView("/requestpage","requests", "View Request");
     }
 
-
-    @RequestMapping(value = "/addrequest")
-    public ModelAndView addrequest (
+    @RequestMapping(value = "/addRequest")
+    public ModelAndView addRequest (
             @RequestParam("UserID") String UserID,
             @RequestParam("departure") String departure,
             @RequestParam("arrival") String arrival,
@@ -88,7 +85,7 @@ public class HomeController {
             return new ModelAndView("error", "errmsg", "customer add failed");
         }
 
-        ModelAndView mv = new ModelAndView("/viewRequest");
+        ModelAndView mv = new ModelAndView("matches");
         mv.addObject("UserID", UserID);
         mv.addObject("departure", departure);
         mv.addObject("arrival", arrival);
@@ -99,7 +96,27 @@ public class HomeController {
 
         return mv;
     }
-}
+
+    @RequestMapping(value = "getMatches")
+    public ModelAndView getMatchList() {
+
+            ArrayList<matches> matchList = DAO.getMatches();
+
+            //TODO: make error.jsp
+            if (matchList == null) {
+                return new ModelAndView("matches", "errmsg", "Sorry! We have no matches for you at this time");
+            }
+
+            return new ModelAndView("getMatchList", "mdata", matchList);
+        }
+
+        @RequestMapping(value="/matches")
+        public ModelAndView matches() {
+
+        return new ModelAndView("matches", "matches","Your matches");
+        }
+    }
+
 
 
 

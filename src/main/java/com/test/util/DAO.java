@@ -68,7 +68,7 @@ public class DAO {
     }
 
     public static boolean addrequest(
-            String UserId,
+            String UserID,
             String departure,
             String arrival,
             String time,
@@ -88,9 +88,9 @@ public class DAO {
                     DAOCredentials.PASSWORD);
 
             String addRequestCommand = "INSERT INTO request " +
-                    "(UserId, departure, arrival, time, date, frequency, message)" +
+                    "(UserID, departure, arrival, time, date, frequency, message)" +
                     "VALUES ('" +
-                    UserId + "', '" +
+                    UserID + "', '" +
                     departure + "', '" +
                     arrival + "', '" +
                     time + "', '" +
@@ -113,4 +113,56 @@ public class DAO {
         }
     }
 
+    public static ArrayList<matches> getMatches() {
+
+
+        try {
+            //Load driver
+            // below is more dynamic
+            Class.forName("com.mysql.jdbc.Driver");
+
+            // below is static
+            //DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+            Connection mysqlConnection;
+            mysqlConnection = DriverManager.getConnection(
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
+
+            // Next step is to create db statement
+            // the select statement can be changed to insert into, update, delete
+            String readMatchesCommand = "select UserID, FirstName, gender, Company  from UserInfo";
+
+            // creates a statement
+            Statement readMatches = mysqlConnection.createStatement();
+
+            //executes the statement
+            ResultSet results = readMatches.executeQuery(readMatchesCommand);
+
+            //Array list of customers
+            ArrayList<matches> matchList = new ArrayList<matches>();
+
+            //map from result set to ArrayList
+            //ORM Object Relational Mapping
+
+            // if you have more rows to read it continues
+            while (results.next()) {
+                // gets data from column 1 and column 2
+                matches temp = new matches(results.getString(1), results.getString(2), results.getString(3),
+                        results.getString(4), results.getString(5));
+
+                // added the temp customer to the arrayList
+                matchList.add(temp);
+            }
+
+            return matchList;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null; //null result indicates an issue
+        }
+        // doing return null for now, but this can be an error for the user on a new view/page
+        // create an error page with custom error message
+    }
 }

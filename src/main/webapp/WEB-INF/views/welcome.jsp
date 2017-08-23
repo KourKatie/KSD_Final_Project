@@ -68,11 +68,7 @@
             <input type="radio" name="gender" value="female"> Female<br>
 
             <br/>
-            <!--
-            Please Upload A Picture:
-            <input type="file" name="pic" accept="image/*">
-            <input type="submit">
--->
+
             <br/>
 
             <input type="checkbox" checked="checked"> Remember me
@@ -95,23 +91,8 @@
     <input type="submit" value="Login"/>
 </form>
 
-<script>
-    function validateForm() {
-        var un = document.loginform.email.value;
-        var pw = document.loginform.pword.value;
-        var username = "delwar@yahoo.com";
-        var password = "pass123";
-        if ((un === username) && (pw === password)) {
-            return
-            return true;
-        }
-        else {
-            alert ("Login was unsuccessful, please check your username and password");
-            return false;
-        }
-    }
-</script>
-
 </body>
 
 </html>
+
+

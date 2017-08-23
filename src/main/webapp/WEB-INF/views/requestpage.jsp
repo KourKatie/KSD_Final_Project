@@ -13,7 +13,8 @@
 <body>
 <h1>Company Name</h1>
 <p></p>
-<form action="/addrequest" method="post">
+<form action="/addRequest">
+Insert UserID: <input type="text" name="UserID"> <br>
 Departure Station: <select name="departure">
     <option value="one" name="E Bethune St & Brush St">E Bethune St & Brush St</option>
     <option value="two" name="Second Ave & W Grand Blvd">Second Ave & W Grand Blvd</option>
@@ -109,16 +110,17 @@ Time: <select name="time">
     <option value="Afternoon">Afternoon</option>
     <option value="Evening">Evening</option>
 </select>
-Start Date: <input type="date">
+Start Date: <input type="date" name="date">
 Frequency: <select name="frequency">
     <option value="weekday">Mon-Fri</option>
     <option value="daily">daily</option>
     <option value="one time">one time</option>
-</select><br>
+</select>
 (Be more specific about your trip, add a message) <input type="text" name="message">
-<br>
+    <!--<form action="/matches">-->
 <input type="submit" value="Add Request">
-</form>
+    </form>
+<!--</form>-->
 
 <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OgcE4Jko7Qw8604Mo_Mi-NarUQw" width="1200" height="780"></iframe>
 
