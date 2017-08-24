@@ -12,11 +12,13 @@
 </head>
 <body>
 
-<h1>Company Name</h1> <!-- Needs to be centered CSS -->
+<h1 align="center">Mogo With Me</h1> <
 
-<h3>User Profile</h3> <!-- Needs to be centered CSS -->
+<h3 align="center">User Profile</h3> <!-- Needs to be centered CSS -->
 
-<!-- User info will be centered as well possibly next to profile picture -->
+<input type="hidden" name="UserId" value="${UserId}">
+
+<div align="center"><!-- User info will be centered as well possibly next to profile picture -->
 First Name: ${FirstName} <br/>
 Last Name: ${LastName}<br/>
 Gender: ${gender}<br/>
@@ -27,35 +29,35 @@ Phone Provider: ${cellProvider}<br/>
 Vehicle MPG: ${vehicleMPG}<br/>
 
 
-
 <button type="button" onclick="alert('You have updated your profile')">Update</button>
 <button type ="button" onclick="alert('You have deleted your profile')">Delete</button>
 
 <br/>
 <br/>
+</div>
 
-History:
+<%--History:--%>
 
-<br/>
+<%--<br/>--%>
 
-<!-- History will come from the database -->
+<%--<!-- History will come from the database -->--%>
 
-<br/>
-Statistics
+<%--<br/>--%>
+<%--Statistics--%>
 
-<br/>
-Gas Saved:
-<br/>
-Money Saved:
-<br/>
-Rides Completed:
-<br/>
-Calories Burned:
-<br/>
-Miles Biked:
-<br/>
-Environmental Impact:
-<br/>
+<%--<br/>--%>
+<%--Gas Saved:--%>
+<%--<br/>--%>
+<%--Money Saved:--%>
+<%--<br/>--%>
+<%--Rides Completed:--%>
+<%--<br/>--%>
+<%--Calories Burned:--%>
+<%--<br/>--%>
+<%--Miles Biked:--%>
+<%--<br/>--%>
+<%--Environmental Impact:--%>
+<%--<br/>--%>
 
 
 </body>

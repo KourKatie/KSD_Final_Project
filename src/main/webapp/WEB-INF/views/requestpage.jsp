@@ -12,7 +12,9 @@
 </head>
 <body>
 <h1>MoGo With Me</h1>
-<p></p>
+<p></p><form action="/profile" align="left">
+    <u><input type="submit" name="Profile" value="Profile"></u>
+</form>
 <form action="/addRequest">
 Insert UserID: <input type="text" name="UserID"> <br>
 Departure Station: <select name="departure">
@@ -118,7 +120,6 @@ Frequency: <select name="frequency">
     <!--<form action="/matches">-->
 <input type="submit" value="Add Request">
     </form>
-<!--</form>-->
 
 <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OgcE4Jko7Qw8604Mo_Mi-NarUQw" width="1200" height="780"></iframe>
 

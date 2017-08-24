@@ -12,6 +12,49 @@ import java.sql.*;
 
 public class DAO {
 
+    //public static ArrayList<>
+    //public static boolean isValid = false;
+    public static boolean verifyLogin(String email, String password) {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            Connection mysqlConnection;
+            mysqlConnection = DriverManager.getConnection(
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
+
+            String readEmailCommand = "select email from userinfo";
+            Statement readEmailList = mysqlConnection.createStatement();// creates the statement
+
+            ResultSet results = readEmailList.executeQuery(readEmailCommand);
+
+            while(results.next() == true) {
+                if (email.equals(results)) {
+                    String readPasswordCommand = "select password from userinfo where email LIKE email";
+
+                    Statement readPasswordList = mysqlConnection.createStatement();
+
+                    ResultSet result = readPasswordList.executeQuery(readPasswordCommand);
+
+                    if (password.equals(result)) {
+
+                        return true;
+
+                    }
+                }
+            }
+
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
+
     public static boolean addCustomer(
             String FirstName,
             String LastName,

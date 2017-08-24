@@ -18,6 +18,9 @@
 Matches for <strong>${date}</strong> in the <strong>${time}</strong> deaparting from <strong>${departure}</strong>
 station and arriving at <strong>${arrival}</strong> station.
 </div>
+
+<input type="hidden" name="UserId" value="${UserId}">
+
 <p></p>
 <table align="center">
 <tr>
@@ -45,10 +48,8 @@ station and arriving at <strong>${arrival}</strong> station.
 
         </form>
     </tr>
-    <%--<form action="getMatches" method="post">--%>
-        <%--<input type="hidden" name="userID"--%>
-               <%--value="${item.userID}">--%>
-    <%--</form>--%>
+
+
     </c:forEach>
 </table>
 

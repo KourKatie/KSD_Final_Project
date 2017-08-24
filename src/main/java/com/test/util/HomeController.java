@@ -21,14 +21,34 @@ public class HomeController {
     // Welcome Page
     @RequestMapping("/")
     public ModelAndView welcome() {
-        return new
-                ModelAndView("welcome", "message",
+        return new ModelAndView("welcome", "message",
                 "Please choose from the below options.");
     }
 
     @RequestMapping("/profile")
-    public ModelAndView profile() {
-        return new ModelAndView("profile", "userProfile", "here's your profile");
+    public ModelAndView profile(
+            @RequestParam("UserId") String UserId,
+            @RequestParam("FirstName") String FirstName,
+            @RequestParam("LastName") String LastName,
+            @RequestParam("email") String email,
+            @RequestParam("phoneNumber") String phoneNumber,
+            @RequestParam("cellProvider") String cellProvider,
+            @RequestParam("Company") String Company,
+            @RequestParam("gender") String gender,
+            @RequestParam("vehicleMPG") Integer vehicleMPG
+    ) {
+        ModelAndView mv = new ModelAndView("/profile");
+        mv.addObject("UserId", UserId);
+        mv.addObject("FirstName", FirstName);
+        mv.addObject("LastName", LastName);
+        mv.addObject("email", email);
+        mv.addObject("phoneNumber", phoneNumber);
+        mv.addObject("cellProvider", cellProvider);
+        mv.addObject("Company", Company);
+        mv.addObject("gender", gender);
+        mv.addObject("vehicleMPG", vehicleMPG);
+
+        return mv;
     }
 
     @RequestMapping(value = "/addCustomer")
@@ -68,8 +88,16 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/requestpage")
-    public ModelAndView requestpage() {
+    public ModelAndView requestpage(
+            @RequestParam("email") String email,
+            @RequestParam("password") String password
+    ) {
+        if (DAO.verifyLogin(email, password) == true) {
         return new ModelAndView("/requestpage", "requests", "View Request");
+        }
+        else {
+            return new ModelAndView("error", "error", "Incorrect Login");
+        }
     }
 
     @RequestMapping(value = "/addRequest")

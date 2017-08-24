@@ -83,11 +83,11 @@
 </div>
 
 
-<form name="loginform" onSubmit="return validateForm();" action="/requestpage" method="post">
+<form name="loginform" action="/requestpage" method="post">
     <label>Email</label>
     <input type="text" name="email" placeholder="Email">
     <label>Password</label>
-    <input type="password" name="pword" placeholder="password">
+    <input type="password" name="password" placeholder="password">
     <input type="submit" value="Login"/>
 </form>
 
