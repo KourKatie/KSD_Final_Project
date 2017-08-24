@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.*;
 
 public class DAO {
 
@@ -114,8 +115,9 @@ public class DAO {
         }
     }
 
-    public static ArrayList<matches> getMatches(
-    ) {
+    public static ArrayList<matches> getMatches(String departure, String arrival, String date, String time)
+
+    {
 
         try {
             //Load driver
@@ -133,22 +135,22 @@ public class DAO {
 
             // Next step is to create db statement
             // the select statement can be changed to insert into, update, delete
-            String readMatchesCommand = "select userinfo.FirstName, userinfo.Company, userinfo.gender, request.departure, request.arrival, " +
+
+            PreparedStatement ps = mysqlConnection.prepareStatement("select userinfo.FirstName, userinfo.Company, userinfo.gender, request.departure, request.arrival, " +
                     "request.date, request.message\n" +
                     "from userinfo\n" +
-                    "inner join request on userinfo.UserId = request.UserID";
+                    "inner join request on userinfo.UserId = request.UserID\n" +
+                    "WHERE request.departure= ? AND request.arrival= ? AND request.date= ? AND request.time= ? ");
 
-            // creates a statement
-            Statement readMatches = mysqlConnection.createStatement();
+            ps.setString(1, departure);
+            ps.setString(2, arrival);
+            ps.setString(3, date);
+            ps.setString(4, time);
 
-            //executes the statement
-            ResultSet results = readMatches.executeQuery(readMatchesCommand);
+            ResultSet results = ps.executeQuery();
 
             //Array list of customers
             ArrayList<matches> matchList = new ArrayList<matches>();
-
-            //map from result set to ArrayList
-            //ORM Object Relational Mapping
 
             // if you have more rows to read it continues
             while (results.next()) {

@@ -12,7 +12,7 @@
     <title>Matches</title>
 </head>
 <body>
-<h1>MoGo With Me</h1>
+<h1 align="center">MoGo With Me</h1>
 <p></p>
 <div align="center">
 Matches for <strong>${date}</strong> in the <strong>${time}</strong> deaparting from <strong>${departure}</strong>
@@ -21,13 +21,13 @@ station and arriving at <strong>${arrival}</strong> station.
 <p></p>
 <table align="center">
 <tr>
-    <th>Company</th>
     <th>Name</th>
-    <th>gender</th>
+    <th>message</th>
+    <th>Company</th>
     <th>Departure Station</th>
     <th>Arrival Station </th>
     <th> Date </th>
-    <th>Message</th>
+    <th>gender</th>
     <th>Request</th>
 </tr>
 <c:forEach items="${mdata}" var="item">

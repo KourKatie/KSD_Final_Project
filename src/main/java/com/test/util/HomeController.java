@@ -85,13 +85,8 @@ public class HomeController {
 
         //add the info to DB through DAO
         boolean result = DAO.addrequest(UserID, departure, arrival, time, date, frequency, message);
-        //best to check the result
-        if (result == false) {
-            //still have to write this view
-            return new ModelAndView("error", "errmsg", "customer add failed");
-        }
 
-        ArrayList<matches> matchList = DAO.getMatches();
+        ArrayList<matches> matchList = DAO.getMatches(departure, arrival, date, time);
 
         if (result == false) {
 
