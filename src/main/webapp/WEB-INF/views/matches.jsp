@@ -39,7 +39,11 @@ station and arriving at <strong>${arrival}</strong> station.
         <td> ${item.arrival} </td>
         <td> ${item.date} </td>
         <td> ${item.message} </td>
-        <td>Button Here <br> </td>
+
+        <form action="messageconfirmation">
+            <td><input type = submit name="submit" value = "Message Buddy"></td>
+
+        </form>
     </tr>
     <%--<form action="getMatches" method="post">--%>
         <%--<input type="hidden" name="userID"--%>
@@ -48,7 +52,7 @@ station and arriving at <strong>${arrival}</strong> station.
     </c:forEach>
 </table>
 
-<button> </button>
+
 
 </body>
 </html>

@@ -106,12 +106,11 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/messageconfirmation")
-    public static class SmsSender {
+    public ModelAndView SmsSender() {
         // Find your Account Sid and Token at twilio.com/user/account
-        public static final String ACCOUNT_SID = "ACb4d31977635fe38ee7abb69a3bbf2571";
-        public static final String AUTH_TOKEN = "cbc80535205267ebdc2c321a8c617967";
+        String ACCOUNT_SID = "ACb4d31977635fe38ee7abb69a3bbf2571";
+        String AUTH_TOKEN = "cbc80535205267ebdc2c321a8c617967";
 
-        public static void main(String[] args) {
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
             Message message = Message.creator(new PhoneNumber("+15865225021"),
@@ -119,6 +118,8 @@ public class HomeController {
                     "This is the ship that made the Kessel Run in fourteen parsecs?").create();
 
             System.out.println(message.getSid());
+
+            return new ModelAndView ("messageconfirmation", "message", "Message send successfully");
         }
 
 
@@ -137,7 +138,7 @@ public class HomeController {
         }
     }
 
-}
+
 
 
 
