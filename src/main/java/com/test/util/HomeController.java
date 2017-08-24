@@ -5,6 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import java.util.ArrayList;
 
@@ -101,6 +108,38 @@ public class HomeController {
         mv.addObject("message", message);
 
         return mv;
+    }
+
+    @RequestMapping(value = "/messageconfirmation")
+    public static class SmsSender {
+        // Find your Account Sid and Token at twilio.com/user/account
+        public static final String ACCOUNT_SID = "ACb4d31977635fe38ee7abb69a3bbf2571";
+        public static final String AUTH_TOKEN = "cbc80535205267ebdc2c321a8c617967";
+
+        public static void main(String[] args) {
+            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+            Message message = Message.creator(new PhoneNumber("+15865225021"),
+                    new PhoneNumber("+18305005414"),
+                    "This is the ship that made the Kessel Run in fourteen parsecs?").create();
+
+            System.out.println(message.getSid());
+        }
+
+
+        public static class Test {
+            public static void main(String[] args) throws IOException {
+                URL url = new URL("https://api.twilio.com/2010-04-01/Accounts/AC123456abc/Messages");
+                HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+                httpCon.setDoOutput(true);
+                httpCon.setRequestMethod("POST");
+                OutputStreamWriter out = new OutputStreamWriter(
+                        httpCon.getOutputStream());
+                System.out.println(httpCon.getResponseCode());
+                System.out.println(httpCon.getResponseMessage());
+                out.close();
+            }
+        }
     }
 
 }
