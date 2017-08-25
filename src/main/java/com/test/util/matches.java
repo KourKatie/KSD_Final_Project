@@ -6,17 +6,18 @@ package com.test.util;
 public class matches {
 
     private String FirstName;
-    private String Company;
     private String message;
     private String departure;
     private String arrival;
     private String date;
     private String gender;
     private String phoneNumber;
+    private String Company;
+
 
     public matches(String firstName, String company, String message, String departure, String arrival, String date, String gender, String phoneNumber) {
-        FirstName = firstName;
-        Company = company;
+        this.FirstName = firstName;
+        this.Company = company;
         this.message = message;
         this.departure = departure;
         this.arrival = arrival;
@@ -31,6 +32,7 @@ public class matches {
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
+
 
     public String getCompany() {
         return Company;
@@ -87,6 +89,8 @@ public class matches {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+
 
 //    @Override
 //    public String toString() {

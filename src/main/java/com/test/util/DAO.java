@@ -216,8 +216,8 @@ public class DAO {
             // Next step is to create db statement
             // the select statement can be changed to insert into, update, delete
 
-            PreparedStatement ps = mysqlConnection.prepareStatement("select userinfo.FirstName, userinfo.phoneNumber, userinfo.Company, userinfo.gender, request.departure, request.arrival, " +
-                    "request.date, request.message\n" +
+            PreparedStatement ps = mysqlConnection.prepareStatement("select userinfo.FirstName, userinfo.Company, request.message, request.departure, request.arrival, " +
+                    "request.date,  userinfo.gender, userinfo.phoneNumber\n" +
                     "from userinfo\n" +
                     "inner join request on userinfo.UserId = request.UserID\n" +
                     "WHERE request.departure= ? AND request.arrival= ? AND request.date= ? AND request.time= ? ");

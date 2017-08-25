@@ -25,19 +25,19 @@ station and arriving at <strong>${arrival}</strong> station.
 <table align="center">
 <tr>
     <th>Name</th>
-    <th>message</th>
     <th>Company</th>
+    <th>gender</th>
     <th>Departure Station</th>
     <th>Arrival Station </th>
     <th> Date </th>
-    <th>gender</th>
+    <th>message</th>
     <th>Request</th>
 </tr>
 
 <c:forEach items="${mdata}" var="item">
     <tr>
         <td> ${item.firstName} </td>
-        <td> ${item.Company} </td>
+        <td> ${item.company} </td>
         <td> ${item.gender}</td>
         <td> ${item.departure} </td>
         <td> ${item.arrival} </td>
