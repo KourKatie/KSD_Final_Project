@@ -15,6 +15,9 @@ import java.net.URL;
 
 import java.util.ArrayList;
 
+import static com.test.util.DAOCredentials.ACCOUNT_SID;
+import static com.test.util.DAOCredentials.AUTH_TOKEN;
+
 @Controller
 public class HomeController {
 
@@ -138,9 +141,6 @@ public class HomeController {
     public ModelAndView SmsSender(
             String phoneNumber
     ) {
-        // Find your Account Sid and Token at twilio.com/user/account
-        String ACCOUNT_SID = "ACb4d31977635fe38ee7abb69a3bbf2571";
-        String AUTH_TOKEN = "cbc80535205267ebdc2c321a8c617967";
 
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
