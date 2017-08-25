@@ -24,38 +24,33 @@ public class HomeController {
     // Welcome Page
     @RequestMapping("/")
     public ModelAndView welcome() {
+
         return new ModelAndView("welcome", "message",
                 "Please choose from the below options.");
     }
 
-    @RequestMapping("/profile")
-    public ModelAndView profile(
-            @RequestParam("UserId") String UserId,
-            @RequestParam("FirstName") String FirstName,
-            @RequestParam("LastName") String LastName,
-            @RequestParam("email") String email,
-            @RequestParam("phoneNumber") String phoneNumber,
-            @RequestParam("cellProvider") String cellProvider,
-            @RequestParam("Company") String Company,
-            @RequestParam("gender") String gender,
-            @RequestParam("vehicleMPG") Integer vehicleMPG
+    @RequestMapping("/verifylogin")
+      public ModelAndView verifylogin(
+              @RequestParam("email") String email,
+              @RequestParam("password") String password
     ) {
-        ModelAndView mv = new ModelAndView("/profile");
-        mv.addObject("UserId", UserId);
-        mv.addObject("FirstName", FirstName);
-        mv.addObject("LastName", LastName);
-        mv.addObject("email", email);
-        mv.addObject("phoneNumber", phoneNumber);
-        mv.addObject("cellProvider", cellProvider);
-        mv.addObject("Company", Company);
-        mv.addObject("gender", gender);
-        mv.addObject("vehicleMPG", vehicleMPG);
 
-        return mv;
+        boolean result = DAO.verifyLogin(email, password);
+
+        if (result == false) {
+            return new ModelAndView("error", "errormsg", "login incorrect");
+        }
+        return new ModelAndView("/requestpage");
+    }
+
+    @RequestMapping("/profile")
+    public ModelAndView profile() {
+      return new ModelAndView("profile", "profile", "view your profile");
     }
 
     @RequestMapping(value = "/addCustomer")
     public ModelAndView addCustomer(
+//            @RequestParam("UserId") String UserId,
             @RequestParam("FirstName") String FirstName,
             @RequestParam("LastName") String LastName,
             @RequestParam("email") String email,
@@ -70,6 +65,9 @@ public class HomeController {
 
         //add the info to DB through DAO
         boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber, cellProvider, Company, gender, password, vehicleMPG);
+
+//        UserId = DAO.getUserId(email);
+
         //best to check the result
         if (result == false) {
             //still have to write this view
@@ -77,6 +75,7 @@ public class HomeController {
         }
 
         ModelAndView mv = new ModelAndView("requestpage");
+//        mv.addObject("UserId", UserId);
         mv.addObject("FirstName", FirstName);
         mv.addObject("LastName", LastName);
         mv.addObject("email", email);
@@ -146,7 +145,7 @@ public class HomeController {
 
             Message message = Message.creator(new PhoneNumber("+" + phoneNumber),
                     new PhoneNumber("+18305005414"),
-                    "Someone has matched with you!").create();
+                     "Someone has matched with you! You may contact them at " + phoneNumber).create();
 
             System.out.println(message.getSid());
 

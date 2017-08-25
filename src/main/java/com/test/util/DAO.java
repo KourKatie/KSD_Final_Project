@@ -46,8 +46,71 @@ public class DAO {
 //            return userProfileList;
 //    }
 
-//    public static boolean isValid = false;
-//    public static boolean verifyLogin(String email, String password) {
+    public static boolean verifyLogin(String email, String password) {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            Connection mysqlConnection;
+            mysqlConnection = DriverManager.getConnection(
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
+
+            String readEmailCommand = "select email from userinfo";
+            Statement readEmailList = mysqlConnection.createStatement();// creates the statement
+            System.out.println("reademaillist: " + readEmailList);
+
+            ResultSet results = readEmailList.executeQuery(readEmailCommand);
+            System.out.println("results: " + results);
+
+            while(results.next() == true) {
+                String emailFromDb = results.getString(1);
+                System.out.println("emailfromDB" + emailFromDb);
+
+                if (email.equals(emailFromDb)) {
+                    System.out.println("works here");
+                    PreparedStatement readPasswordCommand = mysqlConnection.prepareStatement("select passEncrypted from userinfo where email LIKE ? ");
+
+                    readPasswordCommand.setString(1, email);
+
+                    ResultSet result = readPasswordCommand.executeQuery();
+
+                    System.out.println(result);
+
+                    while(result.next() == true) {
+
+                        String passwordFromDB = result.getString(1);
+
+                        StrongPasswordEncryptor enc = new StrongPasswordEncryptor();
+
+                        String userPassword = enc.encryptPassword(password);
+
+                        System.out.println("Working here too");
+                        System.out.println("here is password stored in db " +passwordFromDB);
+                        System.out.println("here is userpassword " + userPassword);
+
+                        boolean match = enc.checkPassword(password, passwordFromDB);
+
+                    if (match) {
+                        System.out.println("true");
+
+                        return true;
+                    }
+
+                    }
+                }
+            }
+
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+        return false;
+    }
+//    public static String getUserId(String email) {
 //
 //        try {
 //            Class.forName("com.mysql.jdbc.Driver");
@@ -58,39 +121,25 @@ public class DAO {
 //                    DAOCredentials.USERNAME,
 //                    DAOCredentials.PASSWORD);
 //
-//            String readEmailCommand = "select email from userinfo";
-//            Statement readEmailList = mysqlConnection.createStatement();// creates the statement
+//            PreparedStatement us = mysqlConnection.prepareStatement("select UserId from userinfo where email = ?");
 //
-//            ResultSet results = readEmailList.executeQuery(readEmailCommand);
+//            us.setString(1, email);
 //
-//            while(results.next() == true) {
-//                String emailFromDb = results.getString(0);
+//            ResultSet results = us.executeQuery();
 //
-//                if (email.equals(emailFromDb)) {
-//                    String readPasswordCommand = "select passEncryted from userinfo where email LIKE email";
+//            String UserId = "";
 //
-//                    Statement readPasswordList = mysqlConnection.createStatement();
-//
-//                    ResultSet result = readPasswordList.executeQuery(readPasswordCommand);
-//                    while(result.next() == true) {
-//                        String passwordFromDB = results.getString(0);
-//
-//                    if (password.equals(passwordFromDB)) {
-//
-//                        return true;
-//                    }
-//
-//                    }
-//                }
+//            while (results.next() == true) {
+//               UserId = results.getString(0);
 //            }
 //
+//            return  UserId;
 //
-//        } catch (Exception ex){
+//        }catch
+//            (Exception ex){
 //            ex.printStackTrace();
-//            return false;
+//            return null;
 //        }
-//
-//        return true;
 //    }
 
     public static boolean addCustomer(

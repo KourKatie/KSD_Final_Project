@@ -3,6 +3,12 @@
 <head>
     <title>Welcome!</title>
     <%--<link rel="stylesheet" href="/resources/css/styles.css" >--%>
+    <%--<script>--%>
+        <%--function myUserid() {--%>
+            <%--alert("Your UserID is");--%>
+        <%--}--%>
+
+    <%--</script>--%>
 
 </head>
 
@@ -83,7 +89,8 @@
 </div>
 
 
-<%--<form name="loginform" action="/requestpage" method="post">
+<form name="loginform" action="/verifylogin" method="post">
+
     <label>Email</label>
     <input type="text" name="email" placeholder="Email">
     <label>Password</label>

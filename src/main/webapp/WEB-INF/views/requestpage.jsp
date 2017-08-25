@@ -11,9 +11,10 @@
     <title>Request Page</title>
 </head>
 <body>
+<%--<input type="hidden" name="UserId" value="${UserId}">--%>
 <h1>MoGo With Me</h1>
 <p></p><form action="/profile" align="left">
-    <u><input type="submit" name="Profile" value="Profile"></u>
+    <u><input type="submit" name="Profile" value="profile"></u>
 </form>
 <form action="/addRequest">
 Insert UserID: <input type="text" name="UserID"> <br>
