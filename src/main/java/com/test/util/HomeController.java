@@ -56,7 +56,7 @@ public class HomeController {
             @RequestParam("FirstName") String FirstName,
             @RequestParam("LastName") String LastName,
             @RequestParam("email") String email,
-            @RequestParam("phoneNumber") int phoneNumber,
+            @RequestParam("phoneNumber") String phoneNumber,
             @RequestParam("cellProvider") String cellProvider,
             @RequestParam("Company") String Company,
             @RequestParam("gender") String gender,
@@ -88,16 +88,16 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/requestpage")
-    public ModelAndView requestpage(
-            @RequestParam("email") String email,
-            @RequestParam("password") String password
-    ) {
-        if (DAO.verifyLogin(email, password) == true) {
+    public ModelAndView requestpage() {
+//            @RequestParam("email") String email,
+//            @RequestParam("password") String password
+//    ) {
+//        if (DAO.verifyLogin(email, password) == true) {
         return new ModelAndView("/requestpage", "requests", "View Request");
-        }
-        else {
-            return new ModelAndView("error", "error", "Incorrect Login");
-        }
+//        }
+//        else {
+//            return new ModelAndView("error", "error", "Incorrect Login");
+//        }
     }
 
     @RequestMapping(value = "/addRequest")
@@ -109,6 +109,7 @@ public class HomeController {
             @RequestParam("date") String date,
             @RequestParam("frequency") String frequency,
             @RequestParam("message") String message
+
     ) {
 
         //add the info to DB through DAO
@@ -134,16 +135,18 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/messageconfirmation")
-    public ModelAndView SmsSender() {
+    public ModelAndView SmsSender(
+            String phoneNumber
+    ) {
         // Find your Account Sid and Token at twilio.com/user/account
         String ACCOUNT_SID = "ACb4d31977635fe38ee7abb69a3bbf2571";
         String AUTH_TOKEN = "cbc80535205267ebdc2c321a8c617967";
 
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-            Message message = Message.creator(new PhoneNumber("+15865225021"),
+            Message message = Message.creator(new PhoneNumber("+" + phoneNumber),
                     new PhoneNumber("+18305005414"),
-                    "This is the ship that made the Kessel Run in fourteen parsecs?").create();
+                    "Someone has matched with you!").create();
 
             System.out.println(message.getSid());
 

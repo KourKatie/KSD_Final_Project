@@ -19,7 +19,7 @@ Matches for <strong>${date}</strong> in the <strong>${time}</strong> deaparting 
 station and arriving at <strong>${arrival}</strong> station.
 </div>
 
-<input type="hidden" name="UserId" value="${UserId}">
+<%--<input type="hidden" name="UserId" value="${UserId}">--%>
 
 <p></p>
 <table align="center">
@@ -33,19 +33,21 @@ station and arriving at <strong>${arrival}</strong> station.
     <th>gender</th>
     <th>Request</th>
 </tr>
+
 <c:forEach items="${mdata}" var="item">
     <tr>
         <td> ${item.firstName} </td>
-        <td> ${item.gender} </td>
-        <td> ${item.company} </td>
-        <td> ${item.departure}</td>
+        <td> ${item.Company} </td>
+        <td> ${item.gender}</td>
+        <td> ${item.departure} </td>
         <td> ${item.arrival} </td>
         <td> ${item.date} </td>
         <td> ${item.message} </td>
 
         <form action="messageconfirmation">
-            <td><input type = submit name="submit" value = "Message Buddy"></td>
-
+            <td><input type = submit name="submit" value = "submit">
+                <input type="hidden" name="phoneNumber"
+                       value="${item.phoneNumber}"></td>
         </form>
     </tr>
 

@@ -5,7 +5,6 @@ package com.test.util;
  */
 public class matches {
 
-
     private String FirstName;
     private String Company;
     private String message;
@@ -13,8 +12,9 @@ public class matches {
     private String arrival;
     private String date;
     private String gender;
+    private String phoneNumber;
 
-    public matches(String firstName, String company, String message, String departure, String arrival, String date, String gender) {
+    public matches(String firstName, String company, String message, String departure, String arrival, String date, String gender, String phoneNumber) {
         FirstName = firstName;
         Company = company;
         this.message = message;
@@ -22,8 +22,8 @@ public class matches {
         this.arrival = arrival;
         this.date = date;
         this.gender = gender;
+        this.phoneNumber = phoneNumber;
     }
-
     public String getFirstName() {
         return FirstName;
     }
@@ -79,4 +79,19 @@ public class matches {
     public void setGender(String gender) {
         this.gender = gender;
     }
-}
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+//    @Override
+//    public String toString() {
+//        return phoneNumber;
+//    }
+
+    }
+

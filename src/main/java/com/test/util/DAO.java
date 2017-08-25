@@ -12,54 +12,92 @@ import java.sql.*;
 
 public class DAO {
 
-    //public static ArrayList<>
-    //public static boolean isValid = false;
-    public static boolean verifyLogin(String email, String password) {
+//    public static ArrayList<userProfile> getUserId(String UserId) {
+//
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//
+//            Connection mysqlConnection;
+//            mysqlConnection = DriverManager.getConnection(
+//                    DAOCredentials.DB_ADDRESS,
+//                    DAOCredentials.USERNAME,
+//                    DAOCredentials.PASSWORD);
+//
+//            String readUserCommand = "select FirstName, LastName, email, phoneNumber, cellProvider, Company, gender from userinfo";
+//            Statement readUserList = mysqlConnection.createStatement();
+//
+//            ResultSet results = readUserList.executeQuery(readUserCommand);
+//              ResultSetMetaData metadata = results.getMetaData();
+//              int columncount = metadata.getColumnCount();
+//
+//            ArrayList<userProfile> userProfileList = new ArrayList<userProfile>();
+//
+//            while (results.next()) {
+//
+//                userProfile temp = new userProfile(results.getString(1), results.getString(2), results.getString(3),
+//                        results.getString(4), results.getString(5), results.getString(6), results.getString(7));
+//
+//                userProfileList.add(temp);
+//            }
+//
+//        } catch (Exception ex){
+//            ex.printStackTrace();
+//        }
+//            return userProfileList;
+//    }
 
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-            Connection mysqlConnection;
-            mysqlConnection = DriverManager.getConnection(
-                    DAOCredentials.DB_ADDRESS,
-                    DAOCredentials.USERNAME,
-                    DAOCredentials.PASSWORD);
-
-            String readEmailCommand = "select email from userinfo";
-            Statement readEmailList = mysqlConnection.createStatement();// creates the statement
-
-            ResultSet results = readEmailList.executeQuery(readEmailCommand);
-
-            while(results.next() == true) {
-                if (email.equals(results)) {
-                    String readPasswordCommand = "select password from userinfo where email LIKE email";
-
-                    Statement readPasswordList = mysqlConnection.createStatement();
-
-                    ResultSet result = readPasswordList.executeQuery(readPasswordCommand);
-
-                    if (password.equals(result)) {
-
-                        return true;
-
-                    }
-                }
-            }
-
-
-        } catch (Exception ex){
-            ex.printStackTrace();
-            return false;
-        }
-
-        return true;
-    }
+//    public static boolean isValid = false;
+//    public static boolean verifyLogin(String email, String password) {
+//
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//
+//            Connection mysqlConnection;
+//            mysqlConnection = DriverManager.getConnection(
+//                    DAOCredentials.DB_ADDRESS,
+//                    DAOCredentials.USERNAME,
+//                    DAOCredentials.PASSWORD);
+//
+//            String readEmailCommand = "select email from userinfo";
+//            Statement readEmailList = mysqlConnection.createStatement();// creates the statement
+//
+//            ResultSet results = readEmailList.executeQuery(readEmailCommand);
+//
+//            while(results.next() == true) {
+//                String emailFromDb = results.getString(0);
+//
+//                if (email.equals(emailFromDb)) {
+//                    String readPasswordCommand = "select passEncryted from userinfo where email LIKE email";
+//
+//                    Statement readPasswordList = mysqlConnection.createStatement();
+//
+//                    ResultSet result = readPasswordList.executeQuery(readPasswordCommand);
+//                    while(result.next() == true) {
+//                        String passwordFromDB = results.getString(0);
+//
+//                    if (password.equals(passwordFromDB)) {
+//
+//                        return true;
+//                    }
+//
+//                    }
+//                }
+//            }
+//
+//
+//        } catch (Exception ex){
+//            ex.printStackTrace();
+//            return false;
+//        }
+//
+//        return true;
+//    }
 
     public static boolean addCustomer(
             String FirstName,
             String LastName,
             String email,
-            int phoneNumber,
+            String phoneNumber,
             String cellProvider,
             String Company,
             String gender,
@@ -80,7 +118,6 @@ public class DAO {
             StrongPasswordEncryptor enc = new StrongPasswordEncryptor();
 
             String passEncrypted = enc.encryptPassword(password);
-
 
             String addCustomerCommand = "INSERT INTO userinfo " +
                     "(FirstName, LastName, email, phoneNumber, cellProvider, Company, " +
@@ -179,7 +216,7 @@ public class DAO {
             // Next step is to create db statement
             // the select statement can be changed to insert into, update, delete
 
-            PreparedStatement ps = mysqlConnection.prepareStatement("select userinfo.FirstName, userinfo.Company, userinfo.gender, request.departure, request.arrival, " +
+            PreparedStatement ps = mysqlConnection.prepareStatement("select userinfo.FirstName, userinfo.phoneNumber, userinfo.Company, userinfo.gender, request.departure, request.arrival, " +
                     "request.date, request.message\n" +
                     "from userinfo\n" +
                     "inner join request on userinfo.UserId = request.UserID\n" +
@@ -199,7 +236,7 @@ public class DAO {
             while (results.next()) {
                 // gets data from column 1 and column 2
                 matches temp = new matches(results.getString(1), results.getString(2), results.getString(3),
-                        results.getString(4), results.getString(5), results.getString(6), results.getString(7));
+                        results.getString(4), results.getString(5), results.getString(6), results.getString(7), results.getString(8));
 
                 // added the temp customer to the arrayList
                 matchList.add(temp);
@@ -215,5 +252,43 @@ public class DAO {
         // create an error page with custom error message
     }
 
+    public static String getEmailDB(String email) {
+        try {
+            //Load driver
+            // below is more dynamic
+            Class.forName("com.mysql.jdbc.Driver");
 
+            // below is static
+            //DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+            Connection mysqlConnection;
+            mysqlConnection = DriverManager.getConnection(
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME ,
+                    DAOCredentials.PASSWORD);
+
+            PreparedStatement em = mysqlConnection.prepareStatement("select phoneNumber from userinfo where email = ?");
+
+            em.setString(1, email);
+
+            ResultSet emailDB = em.executeQuery();
+
+            while (emailDB.next()) {
+                String matchPhone = emailDB.getString(0);
+
+                return matchPhone;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+
+            // doing return null for now, but this can be an error for the user on a new view/page
+            // create an error page with custom error message
+        }
+
+        return null;
+
+    }
 }
+
