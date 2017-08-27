@@ -28,37 +28,12 @@ Phone Number: ${phoneNumber}<br/>
 Phone Provider: ${cellProvider}<br/>
 Vehicle MPG: ${vehicleMPG}<br/>
 
-
 <button type="button" onclick="alert('You have updated your profile')">Update</button>
 <button type ="button" onclick="alert('You have deleted your profile')">Delete</button>
 
 <br/>
 <br/>
 </div>
-
-<%--History:--%>
-
-<%--<br/>--%>
-
-<%--<!-- History will come from the database -->--%>
-
-<%--<br/>--%>
-<%--Statistics--%>
-
-<%--<br/>--%>
-<%--Gas Saved:--%>
-<%--<br/>--%>
-<%--Money Saved:--%>
-<%--<br/>--%>
-<%--Rides Completed:--%>
-<%--<br/>--%>
-<%--Calories Burned:--%>
-<%--<br/>--%>
-<%--Miles Biked:--%>
-<%--<br/>--%>
-<%--Environmental Impact:--%>
-<%--<br/>--%>
-
 
 </body>
 </html>

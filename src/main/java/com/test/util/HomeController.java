@@ -35,22 +35,29 @@ public class HomeController {
               @RequestParam("password") String password
     ) {
 
-        boolean result = DAO.verifyLogin(email, password);
+        int UserId = DAO.verifyLogin(email, password);
 
-        if (result == false) {
+        if (UserId == 0) {
             return new ModelAndView("error", "errormsg", "login incorrect");
         }
-        return new ModelAndView("/requestpage");
+
+        ModelAndView mv = new ModelAndView("requestpage");
+        mv.addObject("UserId", UserId);
+
+        return mv;
     }
 
     @RequestMapping("/profile")
-    public ModelAndView profile() {
+    public ModelAndView profile(
+            @RequestParam("UserId") int UserId
+    ) {
+
       return new ModelAndView("profile", "profile", "view your profile");
+
     }
 
     @RequestMapping(value = "/addCustomer")
     public ModelAndView addCustomer(
-//            @RequestParam("UserId") String UserId,
             @RequestParam("FirstName") String FirstName,
             @RequestParam("LastName") String LastName,
             @RequestParam("email") String email,
@@ -66,16 +73,13 @@ public class HomeController {
         //add the info to DB through DAO
         boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber, cellProvider, Company, gender, password, vehicleMPG);
 
-//        UserId = DAO.getUserId(email);
-
         //best to check the result
         if (result == false) {
             //still have to write this view
             return new ModelAndView("error", "errmsg", "customer add failed");
         }
 
-        ModelAndView mv = new ModelAndView("requestpage");
-//        mv.addObject("UserId", UserId);
+        ModelAndView mv = new ModelAndView("login");
         mv.addObject("FirstName", FirstName);
         mv.addObject("LastName", LastName);
         mv.addObject("email", email);
@@ -89,22 +93,15 @@ public class HomeController {
         return mv;
     }
 
+
     @RequestMapping(value = "/requestpage")
     public ModelAndView requestpage() {
-//            @RequestParam("email") String email,
-//            @RequestParam("password") String password
-//    ) {
-//        if (DAO.verifyLogin(email, password) == true) {
         return new ModelAndView("/requestpage", "requests", "View Request");
-//        }
-//        else {
-//            return new ModelAndView("error", "error", "Incorrect Login");
-//        }
     }
 
     @RequestMapping(value = "/addRequest")
     public ModelAndView addRequest(
-            @RequestParam("UserID") String UserID,
+            @RequestParam("UserId") String UserId,
             @RequestParam("departure") String departure,
             @RequestParam("arrival") String arrival,
             @RequestParam("time") String time,
@@ -115,7 +112,7 @@ public class HomeController {
     ) {
 
         //add the info to DB through DAO
-        boolean result = DAO.addrequest(UserID, departure, arrival, time, date, frequency, message);
+        boolean result = DAO.addrequest(UserId, departure, arrival, time, date, frequency, message);
 
         ArrayList<matches> matchList = DAO.getMatches(departure, arrival, date, time);
 
@@ -125,7 +122,7 @@ public class HomeController {
         }
 
         ModelAndView mv = new ModelAndView("matches", "mdata", matchList);
-        mv.addObject("UserID", UserID);
+        mv.addObject("UserId", UserId);
         mv.addObject("departure", departure);
         mv.addObject("arrival", arrival);
         mv.addObject("time", time);
@@ -138,19 +135,27 @@ public class HomeController {
 
     @RequestMapping(value = "/messageconfirmation")
     public ModelAndView SmsSender(
-            String phoneNumber
+            String phoneNumber,
+            String UserId
     ) {
+
+        String userPhoneNumber = DAO.getUserPhoneNumber(UserId);
+
+        if (userPhoneNumber != null) {
 
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
             Message message = Message.creator(new PhoneNumber("+" + phoneNumber),
                     new PhoneNumber("+18305005414"),
-                     "Someone has matched with you! You may contact them at " + phoneNumber).create();
+                    "Someone has matched with you! You may contact them at " + userPhoneNumber).create();
 
             System.out.println(message.getSid());
 
-            return new ModelAndView ("messageconfirmation", "message", "Message send successfully");
+            return new ModelAndView("messageconfirmation", "message", "Message send successfully");
         }
+
+        return new ModelAndView("messageFailure", "message", "Failure to send message");
+    }
 
 
         public static class Test {

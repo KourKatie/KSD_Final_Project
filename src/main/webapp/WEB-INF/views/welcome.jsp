@@ -95,8 +95,10 @@
     <input type="text" name="email" placeholder="Email">
     <label>Password</label>
     <input type="password" name="password" placeholder="password">
-    <input type="submit" value="Login"/>
-</form>--%>
+    <input type="submit" name="submit" value="Log In"/>
+
+    <%--<input type="hidden" name="UserId" value="${UserId}"/>--%>
+</form>
 
 </body>
 

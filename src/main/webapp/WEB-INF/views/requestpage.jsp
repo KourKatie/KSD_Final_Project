@@ -11,13 +11,13 @@
     <title>Request Page</title>
 </head>
 <body>
-<%--<input type="hidden" name="UserId" value="${UserId}">--%>
 <h1>MoGo With Me</h1>
 <p></p><form action="/profile" align="left">
     <u><input type="submit" name="Profile" value="profile"></u>
 </form>
 <form action="/addRequest">
-Insert UserID: <input type="text" name="UserID"> <br>
+<input type="hidden" name="UserId" value="${UserId}">
+<%--Insert UserID: <input type="text" name="UserID"> <br>--%>
 Departure Station: <select name="departure">
     <option value="E Bethune St & Brush St" name="E Bethune St & Brush St">E Bethune St & Brush St</option>
     <option value="Second Ave & W Grand Blvd" name="Second Ave & W Grand Blvd">Second Ave & W Grand Blvd</option>

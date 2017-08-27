@@ -19,7 +19,6 @@ Matches for <strong>${date}</strong> in the <strong>${time}</strong> deaparting 
 station and arriving at <strong>${arrival}</strong> station.
 </div>
 
-<%--<input type="hidden" name="UserId" value="${UserId}">--%>
 
 <p></p>
 <table align="center">
@@ -45,6 +44,7 @@ station and arriving at <strong>${arrival}</strong> station.
         <td> ${item.message} </td>
 
         <form action="messageconfirmation">
+        <input type="hidden" name="UserId" value="${UserId}">
             <td><input type = submit name="submit" value = "submit">
                 <input type="hidden" name="phoneNumber"
                        value="${item.phoneNumber}"></td>

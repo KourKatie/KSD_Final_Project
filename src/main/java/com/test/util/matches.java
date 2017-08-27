@@ -5,6 +5,7 @@ package com.test.util;
  */
 public class matches {
 
+
     private String FirstName;
     private String message;
     private String departure;
@@ -16,6 +17,7 @@ public class matches {
 
 
     public matches(String firstName, String company, String message, String departure, String arrival, String date, String gender, String phoneNumber) {
+
         this.FirstName = firstName;
         this.Company = company;
         this.message = message;
@@ -24,7 +26,9 @@ public class matches {
         this.date = date;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
+
     }
+
     public String getFirstName() {
         return FirstName;
     }
@@ -32,7 +36,6 @@ public class matches {
     public void setFirstName(String firstName) {
         FirstName = firstName;
     }
-
 
     public String getCompany() {
         return Company;
