@@ -23,6 +23,7 @@ station and arriving at <strong>${arrival}</strong> station.
 <p></p>
 <table align="center">
 <tr>
+    <th>Profile</th>
     <th>Name</th>
     <th>Company</th>
     <th>gender</th>
@@ -34,7 +35,14 @@ station and arriving at <strong>${arrival}</strong> station.
 </tr>
 
 <c:forEach items="${mdata}" var="item">
+
     <tr>
+        <form action="/getMatchProfile">
+        <td><input type="submit" name="submit" value="Profile">
+            <input type="hidden" name="phoneNumber"
+                   value="${item.phoneNumber}"></td>
+        </form>
+
         <td> ${item.firstName} </td>
         <td> ${item.company} </td>
         <td> ${item.gender}</td>

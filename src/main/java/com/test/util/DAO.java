@@ -13,39 +13,39 @@ import java.util.List;
 
 public class DAO {
 
-//    public static ArrayList<userProfile> getUserId(String UserId) {
-//
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//
-//            Connection mysqlConnection;
-//            mysqlConnection = DriverManager.getConnection(
-//                    DAOCredentials.DB_ADDRESS,
-//                    DAOCredentials.USERNAME,
-//                    DAOCredentials.PASSWORD);
-//
-//            String readUserCommand = "select FirstName, LastName, email, phoneNumber, cellProvider, Company, gender from userinfo";
-//            Statement readUserList = mysqlConnection.createStatement();
-//
-//            ResultSet results = readUserList.executeQuery(readUserCommand);
-//              ResultSetMetaData metadata = results.getMetaData();
-//              int columncount = metadata.getColumnCount();
-//
-//            ArrayList<userProfile> userProfileList = new ArrayList<userProfile>();
-//
-//            while (results.next()) {
-//
-//                userProfile temp = new userProfile(results.getString(1), results.getString(2), results.getString(3),
-//                        results.getString(4), results.getString(5), results.getString(6), results.getString(7));
-//
-//                userProfileList.add(temp);
-//            }
-//
-//        } catch (Exception ex){
-//            ex.printStackTrace();
-//        }
-//            return userProfileList;
-//    }
+    public static ArrayList<userProfile> getUserProfile(int UserId) {
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            Connection mysqlConnection;
+            mysqlConnection = DriverManager.getConnection(
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
+
+             PreparedStatement readUserInfo = mysqlConnection.prepareStatement( "select FirstName, LastName, email, phoneNumber, Company, gender from userinfo where UserId = ?");
+
+             readUserInfo.setInt(1, UserId);
+
+            ResultSet results = readUserInfo.executeQuery();
+
+            ArrayList<userProfile> userList = new ArrayList<userProfile>();
+
+            while (results.next()) {
+                userProfile temp = new userProfile(results.getString(1), results.getString(2),
+                        results.getString(3), results.getString(4), results.getString(5), results.getString(6));
+
+                userList.add(temp);
+
+                return userList;
+            }
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+            return null;
+    }
 
     public static int verifyLogin(String email, String password) {
 
@@ -65,7 +65,7 @@ public class DAO {
             ResultSet results = readEmailList.executeQuery(readEmailCommand);
             System.out.println("results: " + results);
 
-            while(results.next() == true) {
+            while (results.next() == true) {
                 String emailFromDb = results.getString(1);
                 System.out.println("emailfromDB" + emailFromDb);
 
@@ -79,7 +79,7 @@ public class DAO {
 
                     System.out.println(result);
 
-                    while(result.next() == true) {
+                    while (result.next() == true) {
 
                         String passwordFromDB = result.getString(1);
 
@@ -88,36 +88,36 @@ public class DAO {
                         String userPassword = enc.encryptPassword(password);
 
                         System.out.println("Working here too");
-                        System.out.println("here is password stored in db " +passwordFromDB);
+                        System.out.println("here is password stored in db " + passwordFromDB);
                         System.out.println("here is userpassword " + userPassword);
 
                         boolean match = enc.checkPassword(password, passwordFromDB);
 
-                    if (match) {
+                        if (match) {
 
-                        PreparedStatement readUserIdCommand = mysqlConnection.prepareStatement("select UserId from userinfo where email LIKE ? ");
+                            PreparedStatement readUserIdCommand = mysqlConnection.prepareStatement("select UserId from userinfo where email LIKE ? ");
 
-                        readUserIdCommand.setString(1, email);
+                            readUserIdCommand.setString(1, email);
 
-                        ResultSet resultofUserId = readUserIdCommand.executeQuery();
+                            ResultSet resultofUserId = readUserIdCommand.executeQuery();
 
-                        while(resultofUserId.next() == true) {
-                            int UserId = resultofUserId.getInt(1);
+                            while (resultofUserId.next() == true) {
+                                int UserId = resultofUserId.getInt(1);
 
-                            System.out.println(UserId);
+                                System.out.println(UserId);
 
-                        return UserId;
+                                return UserId;
+                            }
+
+
                         }
-
-
-                    }
 
                     }
                 }
             }
 
 
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             return 0;
         }
@@ -239,6 +239,7 @@ public class DAO {
                     DAOCredentials.USERNAME,
                     DAOCredentials.PASSWORD);
 
+
             PreparedStatement ps = mysqlConnection.prepareStatement("select userinfo.FirstName, userinfo.Company, request.message, request.departure, request.arrival, " +
                     "request.date,  userinfo.gender, userinfo.phoneNumber\n" +
                     "from userinfo\n" +
@@ -259,7 +260,8 @@ public class DAO {
             while (results.next()) {
                 // gets data from columns
                 matches temp = new matches(results.getString(1), results.getString(2), results.getString(3),
-                        results.getString(4), results.getString(5), results.getString(6), results.getString(7), results.getString(8));
+                        results.getString(4), results.getString(5), results.getString(6),
+                        results.getString(7), results.getString(8));
 
                 // added the temp match to the arrayList
                 matchList.add(temp);
@@ -282,7 +284,7 @@ public class DAO {
             Connection mysqlConnection;
             mysqlConnection = DriverManager.getConnection(
                     DAOCredentials.DB_ADDRESS,
-                    DAOCredentials.USERNAME ,
+                    DAOCredentials.USERNAME,
                     DAOCredentials.PASSWORD);
 
             PreparedStatement us = mysqlConnection.prepareStatement("select phoneNumber, FirstName, LastName from userinfo where UserId = ?");
@@ -291,14 +293,14 @@ public class DAO {
 
             ResultSet result = us.executeQuery();
 
-           List txtList = new ArrayList<textMsg>();
+            List txtList = new ArrayList<textMsg>();
 
-           while (result.next()) {
-               txtList.add(result.getString(1));
-               txtList.add(result.getString(2));
-               txtList.add(result.getString(3));
+            while (result.next()) {
+                txtList.add(result.getString(1));
+                txtList.add(result.getString(2));
+                txtList.add(result.getString(3));
 
-               return txtList;
+                return txtList;
             }
 
         } catch (Exception ex) {
@@ -309,5 +311,41 @@ public class DAO {
         return null;
     }
 
+    public static ArrayList<matchProfile> getMatchProfile(String phoneNumber) {
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+
+            Connection mysqlConnection;
+            mysqlConnection = DriverManager.getConnection(
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
+
+            PreparedStatement up = mysqlConnection.prepareStatement("SELECT FirstName, LastName, Company, gender " +
+                    "from userinfo where phoneNumber = ?");
+
+            up.setString(1, phoneNumber);
+
+            ResultSet results = up.executeQuery();
+
+            ArrayList<matchProfile> mProfileList = new ArrayList<matchProfile>();
+
+            while (results.next()) {
+                matchProfile temp = new matchProfile(results.getString(1), results.getString(2), results.getString(3), results.getString(4));
+
+                mProfileList.add(temp);
+
+                return mProfileList;
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+        return null;
+
+    }
 }
 

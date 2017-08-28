@@ -12,8 +12,9 @@
 </head>
 <body>
 <h1>MoGo With Me</h1>
-<p></p><form action="/profile" align="left">
-    <u><input type="submit" name="Profile" value="profile"></u>
+<p></p><form action="/getUserProfile" align="left">
+    <input type="submit" name="submit" value="Profile">
+        <input type="hidden" name="UserId" value="${UserId}">
 </form>
 <form action="/addRequest">
 <input type="hidden" name="UserId" value="${UserId}">

@@ -48,12 +48,14 @@ public class HomeController {
         return mv;
     }
 
-    @RequestMapping("/profile")
-    public ModelAndView profile(
+    @RequestMapping("/getUserProfile")
+    public ModelAndView getUserProfile(
             @RequestParam("UserId") int UserId
     ) {
 
-      return new ModelAndView("profile", "profile", "view your profile");
+        ArrayList<userProfile> userList = DAO.getUserProfile(UserId);
+
+        return new ModelAndView ("/profile", "ppdata", userList);
 
     }
 
@@ -175,6 +177,16 @@ public class HomeController {
                 System.out.println(httpCon.getResponseMessage());
                 out.close();
             }
+        }
+
+        @RequestMapping(value="/getMatchProfile")
+         public ModelAndView getMatchProfile(
+                 @RequestParam("phoneNumber") String phoneNumber
+        ) {
+
+           ArrayList<matchProfile> mProfileList = DAO.getMatchProfile(phoneNumber);
+
+           return new ModelAndView("/matchProfile", "updata", mProfileList);
         }
     }
 

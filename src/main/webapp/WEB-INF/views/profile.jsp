@@ -5,6 +5,7 @@
   Time: 10:37 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,21 +13,22 @@
 </head>
 <body>
 
-<h1 align="center">Mogo With Me</h1> <
+<h1 align="center">Mogo With Me</h1>
 
-<h3 align="center">User Profile</h3> <!-- Needs to be centered CSS -->
+<h3 align="center">User Profile</h3>
 
-<input type="hidden" name="UserId" value="${UserId}">
+<div align="center">
 
-<div align="center"><!-- User info will be centered as well possibly next to profile picture -->
-First Name: ${FirstName} <br/>
-Last Name: ${LastName}<br/>
-Gender: ${gender}<br/>
-Company: ${Company}<br/>
-Email: ${email}<br/>
-Phone Number: ${phoneNumber}<br/>
-Phone Provider: ${cellProvider}<br/>
-Vehicle MPG: ${vehicleMPG}<br/>
+    <c:forEach items="${ppdata}" var="item">
+
+    First Name: ${item.firstName} <br>
+    Last Name: ${item.lastName} <br>
+        Email: ${item.email} <br>
+        PhoneNumber: ${item.phoneNumber}<br>
+    Company: ${item.company} <br>
+    Gender: ${item.gender} <br>
+
+    </c:forEach>
 
 <button type="button" onclick="alert('You have updated your profile')">Update</button>
 <button type ="button" onclick="alert('You have deleted your profile')">Delete</button>
