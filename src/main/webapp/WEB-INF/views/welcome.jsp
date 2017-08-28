@@ -139,6 +139,9 @@
                             Please Upload A Picture:
                             <input type="file" name="pic" accept="image/*">
 
+                            <button type="submit" class="btn btn-default btn-success btn-block">
+                                <span class="glyphicon glyphicon-off"></span> Sign Up</button>
+
 
                         </form>
                     </div>
@@ -153,7 +156,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> <!--div class btn group -->
 
         <!--Bootstrap Links -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
