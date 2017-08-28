@@ -1,45 +1,36 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Welcome!</title>
-    <%--<link rel="stylesheet" href="/resources/css/styles.css" >--%>
-    <%--<script>--%>
-        <%--function myUserid() {--%>
-            <%--alert("Your UserID is");--%>
-        <%--}--%>
-
-    <%--</script>--%>
+    <title>HOMEPAGE</title>
+    <link href="/resources/css/SignUpLogIn.css" rel="stylesheet">
+    <link href="/resources/CSS/carousel.css" rel="stylesheet">
 
 </head>
-
-<%-- Creates a link to the form page--%>
-
-<%--<body background="${pageContext.request.contextPath}/resources/images/bike.jpg">--%>
 <body>
-<br />
-<h1>MoGo With Me</h1>
 
 
+<h1 align = "center">MOGO BUDDY</h1>
 
-<h2>About Us </h2>
+<h2>About Us</h2>
 
-<p>
 
+<p class="aboutus">
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
     dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
 </p>
 
-<!-- SIGN UP BUTTON THAT HOLDS THE REGISTRATION FORM -->
+<!-- SIGN UP BUTTON THAT HOLDS REGISTRATION BUTTON -->
 
-<!-- Button to open the modal -->
-<button onclick="document.getElementById('id01').style.display='block'" class="onscreensubmit">Sign Up</button>
+<!-- Button to open modal -->
+<button onclick="document.getElementById('id01').style.display='block'" class="onscreensignup">Sign Up</button>
 
 <!-- The Modal (contains the Sign Up form) -->
 <div id="id01" class="modal">
+    <!-- This creates the X in top right corner -->
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <!-- action =/addCustomer calls the addCustomer script in the HomeController-->
     <form class="modal-content animate" action="/addCustomer">
         <div class="container">
             <label><b>First Name</b></label>
@@ -54,14 +45,8 @@
             <label><b>Phone Number</b></label>
             <input type="text" placeholder="Enter Phone Number" name="phoneNumber" required>
 
-            <label><b>Cell Phone Provider</b></label>
-            <input type="text" placeholder="Enter Cell Phone Provider" name="cellProvider" required>
-
             <label><b>Company</b></label>
             <input type="text" placeholder="Enter Company" name="Company" required>
-
-            <label><b>Vehicle MPG</b></label>
-            <input type="text" placeholder="Enter Vehicle MPG" name="vehicleMPG" required>
 
             <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" required>
@@ -70,38 +55,62 @@
             <input type="password" placeholder="Re-Enter Password" name="passwordtwo" required>
 
 
-            <input type="radio" name="gender" value="male"> Male<br>
-            <input type="radio" name="gender" value="female"> Female<br>
+            <input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> Female
 
             <br/>
 
-            <br/>
+            Please Upload A Picture:
+            <input type="file" name="pic" accept="image/*">
+
 
             <input type="checkbox" checked="checked"> Remember me
             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn">Sign Up</button>
-
+            <div class = "clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" class="signupbtn">Sign Up</button>
+            </div>
         </div>
     </form>
 </div>
 
 
-<form name="loginform" action="/verifylogin" method="post">
+<!-- LOG IN BUTTON THAT HOLDS LOG IN INFORMATION -->
 
-    <label>Email</label>
-    <input type="text" name="email" placeholder="Email">
-    <label>Password</label>
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" name="submit" value="Log In"/>
+<button onclick="document.getElementById('id02').style.display = 'block'" class="onscreenlogin">Login</button>
 
-    <%--<input type="hidden" name="UserId" value="${UserId}"/>--%>
-</form>
+
+<!-- This creates the X in top right corner -->
+<div id = "id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display = 'none'" class="close" title = "Close Modal">x</span>
+
+    <!-- Adds Avatar/User Picture to form -->
+    <form class="modal-content animate" action = "/action_page.php">
+        <div class="imgcontainer"><img src="resources/images/female.png" alt="Avatar" class="avatar"></div>
+
+
+        <div class="container" style="background-color: #f1f1f1">
+            <label> <b>E-Mail</b></label>
+            <input type="text" placeholder="Enter E-Mail" name="email" required>
+
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw"required>
+
+            <button type="submit">Log In</button>
+            <input type="checkbox" checked="checked">Remember Me</div>
+
+
+        <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtntwo">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+
+
+
+
 
 </body>
-
 </html>
-
-
