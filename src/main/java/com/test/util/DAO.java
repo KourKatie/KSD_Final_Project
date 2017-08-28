@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.*;
+import java.util.List;
 
 public class DAO {
 
@@ -273,7 +274,7 @@ public class DAO {
         // doing return null for now, but this can be an error for the user on a new view/page
     }
 
-    public static String getUserPhoneNumber(String UserId) {
+    public static List<textMsg> getUserInfo(String UserId) {
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
@@ -284,16 +285,20 @@ public class DAO {
                     DAOCredentials.USERNAME ,
                     DAOCredentials.PASSWORD);
 
-            PreparedStatement us = mysqlConnection.prepareStatement("select phoneNumber from userinfo where UserId = ?");
+            PreparedStatement us = mysqlConnection.prepareStatement("select phoneNumber, FirstName, LastName from userinfo where UserId = ?");
 
             us.setString(1, UserId);
 
-            ResultSet gotUserList = us.executeQuery();
+            ResultSet result = us.executeQuery();
 
-            while (gotUserList.next()) {
-                String userPhoneNumber = gotUserList.getString(1);
+           List txtList = new ArrayList<textMsg>();
 
-                return userPhoneNumber;
+           while (result.next()) {
+               txtList.add(result.getString(1));
+               txtList.add(result.getString(2));
+               txtList.add(result.getString(3));
+
+               return txtList;
             }
 
         } catch (Exception ex) {

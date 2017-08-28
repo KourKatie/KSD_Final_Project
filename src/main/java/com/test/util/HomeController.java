@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.test.util.DAOCredentials.ACCOUNT_SID;
 import static com.test.util.DAOCredentials.AUTH_TOKEN;
@@ -139,7 +140,11 @@ public class HomeController {
             String UserId
     ) {
 
-        String userPhoneNumber = DAO.getUserPhoneNumber(UserId);
+        List txtList = DAO.getUserInfo(UserId);
+
+        String userPhoneNumber = String.valueOf(txtList.get(0));
+        String userFirstName = String.valueOf(txtList.get(1));
+        String userLastName = String.valueOf(txtList.get(2));
 
         if (userPhoneNumber != null) {
 
@@ -147,7 +152,7 @@ public class HomeController {
 
             Message message = Message.creator(new PhoneNumber("+" + phoneNumber),
                     new PhoneNumber("+18305005414"),
-                    "Someone has matched with you! You may contact them at " + userPhoneNumber).create();
+                    userFirstName + " " + userLastName + " has matched with you! You may contact them at " + userPhoneNumber).create();
 
             System.out.println(message.getSid());
 

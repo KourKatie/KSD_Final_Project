@@ -86,16 +86,14 @@
     <span onclick="document.getElementById('id02').style.display = 'none'" class="close" title = "Close Modal">x</span>
 
     <!-- Adds Avatar/User Picture to form -->
-    <form class="modal-content animate" action = "/action_page.php">
-        <div class="imgcontainer"><img src="resources/images/female.png" alt="Avatar" class="avatar"></div>
-
+    <form class="modal-content animate" action = "/verifylogin">
 
         <div class="container" style="background-color: #f1f1f1">
             <label> <b>E-Mail</b></label>
             <input type="text" placeholder="Enter E-Mail" name="email" required>
 
             <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw"required>
+            <input type="password" placeholder="Enter Password" name="password"required>
 
             <button type="submit">Log In</button>
             <input type="checkbox" checked="checked">Remember Me</div>
