@@ -1,7 +1,6 @@
 package com.test.util;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,7 +25,7 @@ public class DAO {
                     DAOCredentials.USERNAME,
                     DAOCredentials.PASSWORD);
 
-             PreparedStatement readUserInfo = mysqlConnection.prepareStatement( "select FirstName, LastName, email, phoneNumber, Company, gender from userinfo where UserId = ?");
+             PreparedStatement readUserInfo = mysqlConnection.prepareStatement( "select profilePicture, FirstName, LastName, email, phoneNumber, Company, gender from userinfo where UserId = ?");
 
              readUserInfo.setInt(1, UserId);
 
@@ -36,7 +35,7 @@ public class DAO {
 
             while (results.next()) {
                 userProfile temp = new userProfile(results.getString(1), results.getString(2),
-                        results.getString(3), results.getString(4), results.getString(5), results.getString(6));
+                        results.getString(3), results.getString(4), results.getString(5), results.getString(6), results.getString(7));
 
                 userList.add(temp);
 
@@ -132,11 +131,10 @@ public class DAO {
             String LastName,
             String email,
             String phoneNumber,
-            String cellProvider,
             String Company,
             String gender,
             String password,
-            Integer vehicleMPG
+            String profilePicture
     ) {
 
         try {
@@ -154,18 +152,17 @@ public class DAO {
             String passEncrypted = enc.encryptPassword(password);
 
             String addCustomerCommand = "INSERT INTO userinfo " +
-                    "(FirstName, LastName, email, phoneNumber, cellProvider, Company, " +
-                    "gender, passEncrypted, vehicleMPG) " +
+                    "(FirstName, LastName, email, phoneNumber, Company, " +
+                    "gender, passEncrypted, profilePicture) " +
                     "VALUES ('" +
                     FirstName + "', '" +
                     LastName + "', '" +
                     email + "', '" +
                     phoneNumber + "', '" +
-                    cellProvider + "', '" +
                     Company + "', '" +
                     gender + "', '" +
                     passEncrypted + "', '" +
-                    vehicleMPG + "')";
+                    profilePicture + "')";
 
             System.out.println("SQL Query " + addCustomerCommand);
 
@@ -263,7 +260,7 @@ public class DAO {
                 // gets data from columns
                 matches temp = new matches(results.getString(1), results.getString(2), results.getString(3),
                         results.getString(4), results.getString(5), results.getString(6),
-                        results.getString(7), results.getString(8));
+                        results.getString(7), results.getString(8), results.getString(9));
 
                 // added the temp match to the arrayList
                 matchList.add(temp);

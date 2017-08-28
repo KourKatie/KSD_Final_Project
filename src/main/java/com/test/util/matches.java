@@ -5,7 +5,7 @@ package com.test.util;
  */
 public class matches {
 
-
+    private String profilePicture;
     private String FirstName;
     private String message;
     private String departure;
@@ -14,10 +14,10 @@ public class matches {
     private String gender;
     private String phoneNumber;
     private String Company;
+    
+    public matches(String profilePicture, String firstName, String company, String message, String departure, String arrival, String date, String gender, String phoneNumber) {
 
-
-    public matches(String firstName, String company, String message, String departure, String arrival, String date, String gender, String phoneNumber) {
-
+        this.profilePicture = profilePicture;
         this.FirstName = firstName;
         this.Company = company;
         this.message = message;
@@ -93,6 +93,13 @@ public class matches {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
 
 
 //    @Override

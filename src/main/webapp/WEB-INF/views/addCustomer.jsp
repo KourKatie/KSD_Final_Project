@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Customer Added</title>
+    <script src="https://ucarecdn.com/libs/widget/3.1.2/uploadcare.full.min.js" charset="utf-8"></script>
 </head>
 <body>
 
@@ -18,11 +19,10 @@ Added customer:<br>
 <li>${LastName}</li>
 <li>${email}</li>
 <li>${phoneNumber} </li>
-<li>${cellProvider}</li>
 <li>${Company} </li>
 <li>${gender}</li>
 <li>${password}</li>
-<li>${vehicleMPG}</li>
+<li>${profilePicture}</li>
 
 <a href = "userform">Create Account</a>
 

@@ -21,6 +21,7 @@
 
     <c:forEach items="${ppdata}" var="item">
 
+       <img src=${item.profilePicture}> <br />
     First Name: ${item.firstName} <br>
     Last Name: ${item.lastName} <br>
         Email: ${item.email} <br>

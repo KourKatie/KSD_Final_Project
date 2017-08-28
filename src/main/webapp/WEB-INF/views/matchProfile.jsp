@@ -14,6 +14,7 @@
 <body align="center">
 
 <c:forEach items="${updata}" var="item">
+
 First Name: ${item.firstName} <br>
 Last Name: ${item.lastName} <br>
 Company: ${item.company} <br>

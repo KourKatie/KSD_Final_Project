@@ -5,6 +5,13 @@
     <link href="/resources/css/SignUpLogIn.css" rel="stylesheet">
     <link href="/resources/CSS/carousel.css" rel="stylesheet">
 
+    <script src="https://ucarecdn.com/libs/widget/3.1.2/uploadcare.full.min.js" charset="utf-8"></script>
+    <script>
+        UPLOADCARE_PUBLIC_KEY = 'e71a6ed89f8acaed4d28';
+
+
+    </script>
+
 </head>
 <body>
 
@@ -33,6 +40,9 @@
     <!-- action =/addCustomer calls the addCustomer script in the HomeController-->
     <form class="modal-content animate" action="/addCustomer">
         <div class="container">
+
+
+
             <label><b>First Name</b></label>
             <input type="text" placeholder="Enter First Name" name="FirstName" required>
 
@@ -56,12 +66,12 @@
 
 
             <input type="radio" name="gender" value="male"> Male
-            <input type="radio" name="gender" value="female"> Female
+            <input type="radio" name="gender" value="female"> Female <br />
+
+            Please Upload A Profile Picture:
+            <input type="hidden" role="uploadcare-uploader" name="profilePicture" /> <br />
 
             <br/>
-
-            Please Upload A Picture:
-            <input type="file" name="pic" accept="image/*">
 
 
             <input type="checkbox" checked="checked"> Remember me
@@ -105,10 +115,6 @@
         </div>
     </form>
 </div>
-
-
-
-
 
 </body>
 </html>

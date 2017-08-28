@@ -65,16 +65,15 @@ public class HomeController {
             @RequestParam("LastName") String LastName,
             @RequestParam("email") String email,
             @RequestParam("phoneNumber") String phoneNumber,
-            @RequestParam("cellProvider") String cellProvider,
             @RequestParam("Company") String Company,
             @RequestParam("gender") String gender,
             @RequestParam("password") String password,
-            @RequestParam("vehicleMPG") Integer vehicleMPG
+            @RequestParam("profilePicture") String profilePicture
 
     ) {
 
         //add the info to DB through DAO
-        boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber, cellProvider, Company, gender, password, vehicleMPG);
+        boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber, Company, gender, password, profilePicture);
 
         //best to check the result
         if (result == false) {
@@ -87,11 +86,10 @@ public class HomeController {
         mv.addObject("LastName", LastName);
         mv.addObject("email", email);
         mv.addObject("phoneNumber", phoneNumber);
-        mv.addObject("cellProvider", cellProvider);
         mv.addObject("Company", Company);
         mv.addObject("gender", gender);
         mv.addObject("password", password);
-        mv.addObject("vehicleMPG", vehicleMPG);
+        mv.addObject("profilePicture", profilePicture);
 
         return mv;
     }
