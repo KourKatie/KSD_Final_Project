@@ -104,7 +104,7 @@ public class HomeController {
 
     @RequestMapping(value = "/addRequest")
     public ModelAndView addRequest(
-            @RequestParam("UserId") String UserId,
+            @RequestParam("UserId") int UserId,
             @RequestParam("departure") String departure,
             @RequestParam("arrival") String arrival,
             @RequestParam("time") String time,
@@ -132,6 +132,19 @@ public class HomeController {
         mv.addObject("date", date);
         mv.addObject("frequency", frequency);
         mv.addObject("message", message);
+
+        return mv;
+    }
+
+    @RequestMapping(value = "/getAllRequests")
+    public ModelAndView getAllRequests (
+            @RequestParam("UserId") int UserId
+    ) {
+
+        ArrayList<allRequests> allRequestList = DAO.getAllRequests();
+
+        ModelAndView mv = new ModelAndView("allRequests", "ardata", allRequestList);
+        mv.addObject("UserId", UserId);
 
         return mv;
     }
