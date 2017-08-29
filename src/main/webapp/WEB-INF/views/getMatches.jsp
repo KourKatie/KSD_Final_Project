@@ -14,23 +14,23 @@
 <body>
 <table>
     <tr>
-    <th>First Name</th>
-    <th>Gender</th>
-    <th>Company</th>
-    <th>message</th>
+        <th>First Name</th>
+        <th>Gender</th>
+        <th>Company</th>
+        <th>message</th>
     </tr>
-<c:forEach items="${mdata}" var="item">
-    <tr>
-        <td> ${item.firstName}
-        ${item.gender}
-        ${item.company}
-                ${item.message} <br> </td>
-    </tr>
-    <%--<form action="getMatches" method="post">--%>
-    <%--<input type="hidden" name="userID"--%>
-    <%--value="${item.userID}">--%>
-    <%--</form>--%>
-</c:forEach>
+    <c:forEach items="${mdata}" var="item">
+        <tr>
+            <td> ${item.firstName}
+                    ${item.gender}
+                    ${item.company}
+                    ${item.message} <br> </td>
+        </tr>
+        <%--<form action="getMatches" method="post">--%>
+        <%--<input type="hidden" name="userID"--%>
+        <%--value="${item.userID}">--%>
+        <%--</form>--%>
+    </c:forEach>
 </table>
 
 </body>

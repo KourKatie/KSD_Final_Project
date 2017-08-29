@@ -5,18 +5,28 @@ package com.test.util;
  */
 public class matchProfile {
 
+
+
+    private String profilePicture;
     private String FirstName;
     private String LastName;
     private String Company;
     private String gender;
 
 
-    public matchProfile(String FirstName, String LastName, String Company, String gender) {
+    public matchProfile(String profilePicture, String FirstName, String LastName, String Company, String gender) {
+        this.profilePicture = profilePicture;
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.Company = Company;
         this.gender = gender;
 
+    } public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
     public String getFirstName() {
         return FirstName;

@@ -11,17 +11,15 @@
     <title>Request Page</title>
 </head>
 <body>
-<h1 align="center">MoGo With Me</h1>
-<form action="/getUserProfile" align="right">
+<h1>MoGo With Me</h1>
+<p></p><form action="/getUserProfile" align="left">
     <input type="submit" name="submit" value="Profile">
-        <input type="hidden" name="UserId" value="${UserId}">
+    <input type="hidden" name="UserId" value="${UserId}">
 </form>
-<form action="/getAllRequests"><input type="submit" name="submit" value="View All Requests">
-    <input type="hidden" name="UserId" value="${UserId}"></form> or Add Your Request
 <form action="/addRequest">
-<input type="hidden" name="UserId" value="${UserId}">
-
-Departure Station: <select name="departure">
+    <input type="hidden" name="UserId" value="${UserId}">
+    <%--Insert UserID: <input type="text" name="UserID"> <br>--%>
+    Departure Station: <select name="departure">
     <option value="E Bethune St & Brush St" name="E Bethune St & Brush St">E Bethune St & Brush St</option>
     <option value="Second Ave & W Grand Blvd" name="Second Ave & W Grand Blvd">Second Ave & W Grand Blvd</option>
     <option value="Henry Ford Hospital" name="Henry Ford Hospital">Henry Ford Hospital</option>
@@ -66,7 +64,7 @@ Departure Station: <select name="departure">
     <option value="Ren Cen Plaza & Detroit Riverwalk" name="Ren Cen Plaza & Detroit Riverwalk">Ren Cen Plaza & Detroit Riverwalk</option>
     <option value="Monroe Ave & Campus Martius" name="Monroe Ave & Campus Martius">Monroe Ave & Campus Martius</option>
 </select>
-Arrival Station: <select name="arrival">
+    Arrival Station: <select name="arrival">
     <option value="E Bethune St & Brush St" name="E Bethune St & Brush St">E Bethune St & Brush St</option>
     <option value="Second Ave & W Grand Blvd" name="Second Ave & W Grand Blvd">Second Ave & W Grand Blvd</option>
     <option value="Henry Ford Hospital" name="Henry Ford Hospital">Henry Ford Hospital</option>
@@ -111,19 +109,19 @@ Arrival Station: <select name="arrival">
     <option value="Ren Cen Plaza & Detroit Riverwalk" name="Ren Cen Plaza & Detroit Riverwalk">Ren Cen Plaza & Detroit Riverwalk</option>
     <option value="Monroe Ave & Campus Martius" name="Monroe Ave & Campus Martius">Monroe Ave & Campus Martius</option>
 </select>
-Time: <select name="time">
+    Time: <select name="time">
     <option value="morning">Morning</option>
     <option value="Afternoon">Afternoon</option>
     <option value="Evening">Evening</option>
 </select>
-Start Date: <input type="date" name="date">
-Frequency: <select name="frequency">
+    Start Date: <input type="date" name="date">
+    Frequency: <select name="frequency">
     <option value="one time">one time</option>
 </select>
-(Be more specific about your trip, add a message) <input type="text" name="message">
+    (Be more specific about your trip, add a message) <input type="text" name="message">
     <!--<form action="/matches">-->
-<input type="submit" value="Add Request">
-    </form>
+    <input type="submit" value="Add Request">
+</form>
 
 <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OgcE4Jko7Qw8604Mo_Mi-NarUQw" width="1200" height="780"></iframe>
 

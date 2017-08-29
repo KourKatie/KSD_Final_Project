@@ -31,9 +31,9 @@ public class HomeController {
     }
 
     @RequestMapping("/verifylogin")
-      public ModelAndView verifylogin(
-              @RequestParam("email") String email,
-              @RequestParam("password") String password
+    public ModelAndView verifylogin(
+            @RequestParam("email") String email,
+            @RequestParam("password") String password
     ) {
 
         int UserId = DAO.verifyLogin(email, password);
@@ -73,7 +73,7 @@ public class HomeController {
     ) {
 
         //add the info to DB through DAO
-        boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber, Company, gender, password, profilePicture);
+        boolean result = DAO.addCustomer(FirstName, LastName, email, phoneNumber,Company, gender, password, profilePicture);
 
         //best to check the result
         if (result == false) {
@@ -102,7 +102,7 @@ public class HomeController {
 
     @RequestMapping(value = "/addRequest")
     public ModelAndView addRequest(
-            @RequestParam("UserId") int UserId,
+            @RequestParam("UserId") String UserId,
             @RequestParam("departure") String departure,
             @RequestParam("arrival") String arrival,
             @RequestParam("time") String time,
@@ -130,19 +130,6 @@ public class HomeController {
         mv.addObject("date", date);
         mv.addObject("frequency", frequency);
         mv.addObject("message", message);
-
-        return mv;
-    }
-
-    @RequestMapping(value = "/getAllRequests")
-    public ModelAndView getAllRequests (
-            @RequestParam("UserId") int UserId
-    ) {
-
-        ArrayList<allRequests> allRequestList = DAO.getAllRequests();
-
-        ModelAndView mv = new ModelAndView("allRequests", "ardata", allRequestList);
-        mv.addObject("UserId", UserId);
 
         return mv;
     }
@@ -176,30 +163,30 @@ public class HomeController {
     }
 
 
-        public static class Test {
-            public static void main(String[] args) throws IOException {
-                URL url = new URL("https://api.twilio.com/2010-04-01/Accounts/AC123456abc/Messages");
-                HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-                httpCon.setDoOutput(true);
-                httpCon.setRequestMethod("POST");
-                OutputStreamWriter out = new OutputStreamWriter(
-                        httpCon.getOutputStream());
-                System.out.println(httpCon.getResponseCode());
-                System.out.println(httpCon.getResponseMessage());
-                out.close();
-            }
-        }
-
-        @RequestMapping(value="/getMatchProfile")
-         public ModelAndView getMatchProfile(
-                 @RequestParam("phoneNumber") String phoneNumber
-        ) {
-
-           ArrayList<matchProfile> mProfileList = DAO.getMatchProfile(phoneNumber);
-
-           return new ModelAndView("/matchProfile", "updata", mProfileList);
+    public static class Test {
+        public static void main(String[] args) throws IOException {
+            URL url = new URL("https://api.twilio.com/2010-04-01/Accounts/AC123456abc/Messages");
+            HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+            httpCon.setDoOutput(true);
+            httpCon.setRequestMethod("POST");
+            OutputStreamWriter out = new OutputStreamWriter(
+                    httpCon.getOutputStream());
+            System.out.println(httpCon.getResponseCode());
+            System.out.println(httpCon.getResponseMessage());
+            out.close();
         }
     }
+
+    @RequestMapping(value="/getMatchProfile")
+    public ModelAndView getMatchProfile(
+            @RequestParam("phoneNumber") String phoneNumber
+    ) {
+
+        ArrayList<matchProfile> mProfileList = DAO.getMatchProfile(phoneNumber);
+
+        return new ModelAndView("/matchProfile", "updata", mProfileList);
+    }
+}
 
 
 

@@ -21,21 +21,21 @@
 
     <c:forEach items="${ppdata}" var="item">
 
-       <img src=${item.profilePicture}> <br />
-    First Name: ${item.firstName} <br>
-    Last Name: ${item.lastName} <br>
+        <img src= "${item.profilePicture}" width="250" height="250"> <br />
+        First Name: ${item.firstName} <br>
+        Last Name: ${item.lastName} <br>
         Email: ${item.email} <br>
         PhoneNumber: ${item.phoneNumber}<br>
-    Company: ${item.company} <br>
-    Gender: ${item.gender} <br>
+        Company: ${item.company} <br>
+        Gender: ${item.gender} <br>
 
     </c:forEach>
 
-<button type="button" onclick="alert('You have updated your profile')">Update</button>
-<button type ="button" onclick="alert('You have deleted your profile')">Delete</button>
+    <button type="button" onclick="alert('You have updated your profile')">Update</button>
+    <button type ="button" onclick="alert('You have deleted your profile')">Delete</button>
 
-<br/>
-<br/>
+    <br/>
+    <br/>
 </div>
 
 </body>

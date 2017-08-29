@@ -15,10 +15,11 @@
 
 <c:forEach items="${updata}" var="item">
 
-First Name: ${item.firstName} <br>
-Last Name: ${item.lastName} <br>
-Company: ${item.company} <br>
-Gender: ${item.gender} <br>
+    <img src= "${item.profilePicture}" width="250" height="250"> <br />
+    First Name: ${item.firstName} <br>
+    Last Name: ${item.lastName} <br>
+    Company: ${item.company} <br>
+    Gender: ${item.gender} <br>
 </c:forEach>
 
 </body>

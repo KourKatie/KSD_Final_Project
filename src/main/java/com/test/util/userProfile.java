@@ -4,6 +4,7 @@ package com.test.util;
  * Created by Katie on 8/28/2017.
  */
 public class userProfile {
+
     private String profilePicture;
     private String FirstName;
     private String LastName;
@@ -13,7 +14,7 @@ public class userProfile {
     private String gender;
 
 
-    public userProfile(String profilePicture, String firstName, String lastName, String email, String phoneNumber, String company, String gender) {
+    public userProfile(String profilePicture, String firstName, String lastName, String email, String phoneNumber, String company, String gender ) {
         this.profilePicture = profilePicture;
         this.FirstName = firstName;
         this.LastName = lastName;
@@ -23,6 +24,15 @@ public class userProfile {
         this.gender = gender;
 
     }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
 
     public String getFirstName() {
         return FirstName;
@@ -70,9 +80,5 @@ public class userProfile {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public String getProfilePicture() {
-        return profilePicture;
     }
 }

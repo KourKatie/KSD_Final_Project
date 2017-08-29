@@ -2,9 +2,14 @@
 <html>
 <head>
     <title>HOMEPAGE</title>
+    <link href="/resources/css/SignUpLogIn.css" rel="stylesheet">
+    <link href="/resources/CSS/carousel.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://ucarecdn.com/libs/widget/3.1.2/uploadcare.full.min.js" charset="utf-8"></script>
 
+    <script>
+        UPLOADCARE_PUBLIC_KEY = 'e71a6ed89f8acaed4d28';
+    </script>
 
 
 </head>
@@ -15,7 +20,6 @@
 
 <h2>About Us</h2>
 
-
 <p class="aboutus">
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -23,145 +27,92 @@
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 </p>
 
-<div class="btn-group">
-    <div class="container">
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-default btn-lg" id = "myBtn" data-toggle="modal" data-target="#myModal">Login</button>
+<!-- SIGN UP BUTTON THAT HOLDS REGISTRATION BUTTON -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
+<!-- Button to open modal -->
+<button onclick="document.getElementById('id01').style.display='block'" class="onscreensignup">Sign Up</button>
+
+<!-- The Modal (contains the Sign Up form) -->
+<div id="id01" class="modal">
+    <!-- This creates the X in top right corner -->
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <!-- action =/addCustomer calls the addCustomer script in the HomeController-->
+    <form class="modal-content animate" action="/addCustomer">
+        <div class="container">
+            <label><b>First Name</b></label>
+            <input type="text" placeholder="Enter First Name" name="FirstName" required>
+
+            <label><b>Last Name</b></label>
+            <input type="text" placeholder="Enter Last Name" name="LastName" required>
+
+            <label><b>E-Mail</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label><b>Phone Number</b></label>
+            <input type="text" placeholder="Enter Phone Number" name="phoneNumber" required>
+
+            <label><b>Company</b></label>
+            <input type="text" placeholder="Enter Company" name="Company" required>
+
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+
+            <label><b>Re-Enter Password</b></label>
+            <input type="password" placeholder="Re-Enter Password" name="passwordtwo" required>
 
 
-                <!-- Modal Content -->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss = "modal">&times;</button>
-                        <h4 style = "color:red;"><span class="glyphicon glyphicon-lock"></span> Login </h4>
-                    </div>
+            <input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> Female
+
+            <br/>
+
+            Please Upload A Picture:
+            <input type="hidden" role="uploadcare-uploader" name="profilePicture" />
 
 
-                    <div class="modal-body">
+            <input type="checkbox" checked="checked"> Remember me
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
-                        <!--UserName-->
-                        <form role = "form">
-                            <div class="form-group">
-                                <label for = "usrname"><span class="glyphicon glyphicon-user"></span> Username </label>
-                                <input type="text" class="form-control" id = "usrname" placeholder="Enter E-Mail">
-                            </div>
-
-                            <!-- Password -->
-                            <div class="form-group">
-                                <label for = "logpass"><span class="glyphicon glyphicon-eye-open"></span> Password </label>
-                                <input type="text" class="form-control" id="logpass" placeholder="Enter Password">
-                            </div>
-
-                            <!--Remember Me -->
-                            <div class="checkbox">
-                                <label><input type="checkbox" value=""checked>Remember Me </label></div>
-                            <button type="submit" class="btn btn-default btn-success btn-block">
-                                <span class="glyphicon glyphicon-off"></span> Login </button>
-                        </form>
-                    </div>
-
-                    <!--FOOTER -->
-                    <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss = "modal">
-                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                        <p>Not a member? <a href="#">Sign Up</a> </p>
-                        <p>Forgot <a href="#">Password?</a> </p>
-                    </div>
-
-                </div>
+            <div class = "clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" class="signupbtn">Sign Up</button>
             </div>
         </div>
-    </div>
+    </form>
+</div>
 
 
-    <!-- SIGN UP BUTTON -->
+<!-- LOG IN BUTTON THAT HOLDS LOG IN INFORMATION -->
 
-    <div class="container">
-        <button type="button" class="btn btn-default btn-lg" id="Btn" data-toggle = "modal" data-target ="#accntModal">
-            Sign Up</button>
+<button onclick="document.getElementById('id02').style.display = 'block'" class="onscreenlogin">Login</button>
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="accntModal" role="dialog">
-            <div class="modal-dialog">
+<!-- This creates the X in top right corner -->
+<div id = "id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display = 'none'" class="close" title = "Close Modal">x</span>
 
-                <!-- Modal Content -->
-                <div class="modal-content">
-                    <div class="modal-header"><button type="button" class="close" data-dismiss = "modal">&times;</button>
-                        <h4 style="color:red;">Sign Up</h4>
-                    </div>
-
-                    <div class="modal-body">
-                        <form role="form">
-                            <div class="form-group">
-                                <!-- First Name -->
-                                <label for="firstName">First Name</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
-                            </div>
-
-                            <div class="form-group">
-                                <label for ="lastName">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email"> <span class="glyphicons glyphicons-envelope"></span> E-Mail </label>
-                                <input type="text" class="form-control" id="email" placeholder="Enter E-Mail">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phoneNumber"><span class="glyphicons glyphicons-iphone"></span>Phone Number </label>
-                                <input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="company"><span class="glyphicons glyphicons-building"></span>Company</label>
-                                <input type="text" class="form-control" id="company" placeholder="Enter Company"></div>
+    <!-- Adds Avatar/User Picture to form -->
+    <form class="modal-content animate" action = "/verifylogin">
+        <div class="imgcontainer"><img src="resources/images/female.png" alt="Avatar" class="avatar"></div>
 
 
-                            <div class="form-group">
-                                <label for="password"><span class="glyphicons glyphicons-eye-open"></span>Password </label>
-                                <input type="text" class="form-control" id="password" placeholder="Enter Password"></div>
+        <div class="container" style="background-color: #f1f1f1">
+            <label> <b>E-Mail</b></label>
+            <input type="text" placeholder="Enter E-Mail" name="email" required>
 
-                            <div class="form-group">
-                                <label for="rptpsswrd"><span class="glyphicons glyphicons-eye-open"></span>Confirm Password </label>
-                                <input type="text" class="form-control" id="rptpsswrd" placeholder="Confirm Password"></div>
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password"required>
 
-                            <!--Remember Me -->
-                            <div class="checkbox">
-                                <label><input type="checkbox" value=""checked>Remember Me </label></div>
-
-                            Please Upload A Picture:
-                            <input type="file" name="pic" accept="image/*">
-
-                            <button type="submit" class="btn btn-default btn-success btn-block">
-                                <span class="glyphicon glyphicon-off"></span> Sign Up</button>
+            <button type="submit">Log In</button>
+            <input type="checkbox" checked="checked">Remember Me</div>
 
 
-                        </form>
-                    </div>
-
-                    <!--FOOTER -->
-                    <div class="modal-footer">
-
-                        <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss = "modal">
-                            <span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div> <!--div class btn group -->
-
-        <!--Bootstrap Links -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtntwo">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

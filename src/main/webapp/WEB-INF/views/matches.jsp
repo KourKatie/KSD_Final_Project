@@ -15,49 +15,49 @@
 <h1 align="center">MoGo With Me</h1>
 <p></p>
 <div align="center">
-Matches for <strong>${date}</strong> in the <strong>${time}</strong> deaparting from <strong>${departure}</strong>
-station and arriving at <strong>${arrival}</strong> station.
+    Matches for <strong>${date}</strong> in the <strong>${time}</strong> deaparting from <strong>${departure}</strong>
+    station and arriving at <strong>${arrival}</strong> station.
 </div>
 
 
 <p></p>
 <table align="center">
-<tr>
-    <th>Profile</th>
-    <th>Name</th>
-    <th>Company</th>
-    <th>gender</th>
-    <th>Departure Station</th>
-    <th>Arrival Station </th>
-    <th> Date </th>
-    <th>message</th>
-    <th>Request</th>
-</tr>
-
-<c:forEach items="${mdata}" var="item">
-
     <tr>
-        <form action="/getMatchProfile">
-        <td><input type="submit" name="submit" value="Profile">
-            <input type="hidden" name="phoneNumber"
-                   value="${item.phoneNumber}"></td>
-        </form>
-
-        <td> ${item.firstName} </td>
-        <td> ${item.company} </td>
-        <td> ${item.gender}</td>
-        <td> ${item.departure} </td>
-        <td> ${item.arrival} </td>
-        <td> ${item.date} </td>
-        <td> ${item.message} </td>
-
-        <form action="messageconfirmation">
-        <input type="hidden" name="UserId" value="${UserId}">
-            <td><input type = submit name="submit" value = "submit">
-                <input type="hidden" name="phoneNumber"
-                       value="${item.phoneNumber}"></td>
-        </form>
+        <th>Profile</th>
+        <th>Name</th>
+        <th>Company</th>
+        <th>gender</th>
+        <th>Departure Station</th>
+        <th>Arrival Station </th>
+        <th> Date </th>
+        <th>message</th>
+        <th>Request</th>
     </tr>
+
+    <c:forEach items="${mdata}" var="item">
+
+        <tr>
+            <form action="/getMatchProfile">
+                <td><input type="submit" name="submit" value="Profile">
+                    <input type="hidden" name="phoneNumber"
+                           value="${item.phoneNumber}"></td>
+            </form>
+
+            <td> ${item.firstName} </td>
+            <td> ${item.company} </td>
+            <td> ${item.gender}</td>
+            <td> ${item.departure} </td>
+            <td> ${item.arrival} </td>
+            <td> ${item.date} </td>
+            <td> ${item.message} </td>
+
+            <form action="messageconfirmation">
+                <input type="hidden" name="UserId" value="${UserId}">
+                <td><input type = submit name="submit" value = "submit">
+                    <input type="hidden" name="phoneNumber"
+                           value="${item.phoneNumber}"></td>
+            </form>
+        </tr>
 
 
     </c:forEach>

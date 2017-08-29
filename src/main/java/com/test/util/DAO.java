@@ -1,15 +1,14 @@
 package com.test.util;
 
 import org.jasypt.util.password.StrongPasswordEncryptor;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.*;
-import java.util.Calendar;
 import java.util.List;
 
 public class DAO {
@@ -25,9 +24,9 @@ public class DAO {
                     DAOCredentials.USERNAME,
                     DAOCredentials.PASSWORD);
 
-             PreparedStatement readUserInfo = mysqlConnection.prepareStatement( "select profilePicture, FirstName, LastName, email, phoneNumber, Company, gender from userinfo where UserId = ?");
+            PreparedStatement readUserInfo = mysqlConnection.prepareStatement( "select profilePicture, FirstName, LastName, email, phoneNumber, Company, gender from userinfo where UserId = ?");
 
-             readUserInfo.setInt(1, UserId);
+            readUserInfo.setInt(1, UserId);
 
             ResultSet results = readUserInfo.executeQuery();
 
@@ -45,7 +44,7 @@ public class DAO {
         } catch (Exception ex){
             ex.printStackTrace();
         }
-            return null;
+        return null;
     }
 
     public static int verifyLogin(String email, String password) {
@@ -134,8 +133,7 @@ public class DAO {
             String Company,
             String gender,
             String password,
-            String profilePicture
-    ) {
+            String profilePicture) {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -152,7 +150,7 @@ public class DAO {
             String passEncrypted = enc.encryptPassword(password);
 
             String addCustomerCommand = "INSERT INTO userinfo " +
-                    "(FirstName, LastName, email, phoneNumber, Company, " +
+                    "(FirstName, LastName, email, phoneNumber,Company, " +
                     "gender, passEncrypted, profilePicture) " +
                     "VALUES ('" +
                     FirstName + "', '" +
@@ -181,7 +179,7 @@ public class DAO {
 
 
     public static boolean addrequest(
-            int UserID,
+            String UserID,
             String departure,
             String arrival,
             String time,
@@ -260,7 +258,7 @@ public class DAO {
                 // gets data from columns
                 matches temp = new matches(results.getString(1), results.getString(2), results.getString(3),
                         results.getString(4), results.getString(5), results.getString(6),
-                        results.getString(7), results.getString(8), results.getString(9));
+                        results.getString(7), results.getString(8));
 
                 // added the temp match to the arrayList
                 matchList.add(temp);
@@ -321,7 +319,7 @@ public class DAO {
                     DAOCredentials.USERNAME,
                     DAOCredentials.PASSWORD);
 
-            PreparedStatement up = mysqlConnection.prepareStatement("SELECT FirstName, LastName, Company, gender " +
+            PreparedStatement up = mysqlConnection.prepareStatement("SELECT profilePicture, FirstName, LastName, Company, gender " +
                     "from userinfo where phoneNumber = ?");
 
             up.setString(1, phoneNumber);
@@ -331,7 +329,7 @@ public class DAO {
             ArrayList<matchProfile> mProfileList = new ArrayList<matchProfile>();
 
             while (results.next()) {
-                matchProfile temp = new matchProfile(results.getString(1), results.getString(2), results.getString(3), results.getString(4));
+                matchProfile temp = new matchProfile(results.getString(1), results.getString(2), results.getString(3), results.getString(4), results.getString(5));
 
                 mProfileList.add(temp);
 
@@ -344,54 +342,6 @@ public class DAO {
         }
 
         return null;
-
-    }
-
-    public static ArrayList<allRequests> getAllRequests() {
-
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-
-            Connection mysqlConnection;
-            mysqlConnection = DriverManager.getConnection(
-                    DAOCredentials.DB_ADDRESS,
-                    DAOCredentials.USERNAME,
-                    DAOCredentials.PASSWORD);
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Calendar cal = Calendar.getInstance();
-
-            String today = sdf.format(cal.getTime());
-
-            System.out.println(today);
-
-            PreparedStatement ar = mysqlConnection.prepareStatement("select userinfo.FirstName, userinfo.Company, request.message, request.departure, request.arrival, " +
-                    "request.date, request.time,  userinfo.gender, userinfo.phoneNumber\n" +
-                    "from userinfo\n" +
-                    "inner join request on userinfo.UserId = request.UserID\n" +
-                    "WHERE request.date > ? ");
-
-            ar.setString(1, today);
-
-            ResultSet results = ar.executeQuery();
-
-            ArrayList<allRequests> allRequestList = new ArrayList<allRequests>();
-
-            while (results.next()) {
-                allRequests temp = new allRequests(results.getString(1), results.getString(2), results.getString(3),
-                        results.getString(4), results.getString(5), results.getString(6),
-                        results.getString(7), results.getString(8), results.getString(9));
-
-                allRequestList.add(temp);
-            }
-
-            return allRequestList;
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
 
     }
 }
