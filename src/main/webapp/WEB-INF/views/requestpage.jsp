@@ -11,14 +11,17 @@
     <title>Request Page</title>
 </head>
 <body>
-<h1>MoGo With Me</h1>
+
+            <h1 align="center">
+                MoGo With Me</h1>
+
 <p></p><form action="/getUserProfile" align="left">
     <input type="submit" name="submit" value="Profile">
     <input type="hidden" name="UserId" value="${UserId}">
 </form>
 <form action="/addRequest">
     <input type="hidden" name="UserId" value="${UserId}">
-    <%--Insert UserID: <input type="text" name="UserID"> <br>--%>
+
     Departure Station: <select name="departure">
     <option value="E Bethune St & Brush St" name="E Bethune St & Brush St">E Bethune St & Brush St</option>
     <option value="Second Ave & W Grand Blvd" name="Second Ave & W Grand Blvd">Second Ave & W Grand Blvd</option>
@@ -63,8 +66,9 @@
     <option value="Jefferson Ave & Beaubien St" name="Jefferson Ave & Beaubien St">Jefferson Ave & Beaubien St</option>
     <option value="Ren Cen Plaza & Detroit Riverwalk" name="Ren Cen Plaza & Detroit Riverwalk">Ren Cen Plaza & Detroit Riverwalk</option>
     <option value="Monroe Ave & Campus Martius" name="Monroe Ave & Campus Martius">Monroe Ave & Campus Martius</option>
-</select>
-    Arrival Station: <select name="arrival">
+
+    </select>
+    Arrival Station:<select name="arrival">
     <option value="E Bethune St & Brush St" name="E Bethune St & Brush St">E Bethune St & Brush St</option>
     <option value="Second Ave & W Grand Blvd" name="Second Ave & W Grand Blvd">Second Ave & W Grand Blvd</option>
     <option value="Henry Ford Hospital" name="Henry Ford Hospital">Henry Ford Hospital</option>
@@ -108,7 +112,8 @@
     <option value="Jefferson Ave & Beaubien St" name="Jefferson Ave & Beaubien St">Jefferson Ave & Beaubien St</option>
     <option value="Ren Cen Plaza & Detroit Riverwalk" name="Ren Cen Plaza & Detroit Riverwalk">Ren Cen Plaza & Detroit Riverwalk</option>
     <option value="Monroe Ave & Campus Martius" name="Monroe Ave & Campus Martius">Monroe Ave & Campus Martius</option>
-</select>
+    </select>
+
     Time: <select name="time">
     <option value="morning">Morning</option>
     <option value="Afternoon">Afternoon</option>

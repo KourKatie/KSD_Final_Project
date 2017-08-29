@@ -28,14 +28,15 @@
         PhoneNumber: ${item.phoneNumber}<br>
         Company: ${item.company} <br>
         Gender: ${item.gender} <br>
+        <p></p>
 
     </c:forEach>
 
-    <button type="button" onclick="alert('You have updated your profile')">Update</button>
-    <button type ="button" onclick="alert('You have deleted your profile')">Delete</button>
+    <form action="/viewHistory">
+    <input type="submit" name="submit" value="View History">
+        <input type="hidden" name="UserId" value="${UserId}">
+    </form>
 
-    <br/>
-    <br/>
 </div>
 
 </body>

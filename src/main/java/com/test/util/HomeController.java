@@ -55,7 +55,19 @@ public class HomeController {
 
         ArrayList<userProfile> userList = DAO.getUserProfile(UserId);
 
-        return new ModelAndView ("/profile", "ppdata", userList);
+        ModelAndView mv = new ModelAndView ("/profile", "ppdata", userList);
+        mv.addObject("UserId", UserId);
+
+        return mv;
+
+    }
+
+    @RequestMapping(value="/viewHistory")
+    public ModelAndView viewHistory(int UserId) {
+
+        ArrayList<userHistory> userHistoryList = DAO.getUserHistory(UserId);
+
+        return new ModelAndView("/profileHistory", "updata", userHistoryList);
 
     }
 
@@ -78,7 +90,7 @@ public class HomeController {
         //best to check the result
         if (result == false) {
             //still have to write this view
-            return new ModelAndView("error", "errmsg", "customer add failed");
+            return new ModelAndView("emailError", "errmsg", "customer add failed");
         }
 
         ModelAndView mv = new ModelAndView("login");

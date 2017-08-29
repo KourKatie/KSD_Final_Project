@@ -24,7 +24,10 @@ public class DAO {
                     DAOCredentials.USERNAME,
                     DAOCredentials.PASSWORD);
 
-            PreparedStatement readUserInfo = mysqlConnection.prepareStatement( "select profilePicture, FirstName, LastName, email, phoneNumber, Company, gender from userinfo where UserId = ?");
+            PreparedStatement readUserInfo = mysqlConnection.prepareStatement( "select profilePicture, FirstName, " +
+                    "LastName, email, phoneNumber, Company, gender\n" +
+                    "from userinfo\n " +
+                    "where UserId = ?");
 
             readUserInfo.setInt(1, UserId);
 
@@ -34,7 +37,8 @@ public class DAO {
 
             while (results.next()) {
                 userProfile temp = new userProfile(results.getString(1), results.getString(2),
-                        results.getString(3), results.getString(4), results.getString(5), results.getString(6), results.getString(7));
+                        results.getString(3), results.getString(4), results.getString(5),
+                        results.getString(6), results.getString(7));
 
                 userList.add(temp);
 
@@ -46,6 +50,46 @@ public class DAO {
         }
         return null;
     }
+
+    public static ArrayList<userHistory> getUserHistory(
+            int UserId
+    ) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+
+            Connection mysqlConnection;
+            mysqlConnection = DriverManager.getConnection(
+                    DAOCredentials.DB_ADDRESS,
+                    DAOCredentials.USERNAME,
+                    DAOCredentials.PASSWORD);
+
+            PreparedStatement readUserHistory = mysqlConnection.prepareStatement( "select date, departure, " +
+                    "arrival, time, message\n" +
+                    "from request\n " +
+                    "where UserID = ?");
+
+            readUserHistory.setInt(1, UserId);
+
+            ResultSet results = readUserHistory.executeQuery();
+
+            ArrayList<userHistory> userHistoryList = new ArrayList<userHistory>();
+
+            while (results.next()) {
+                userHistory temp = new userHistory(results.getString(1), results.getString(2),
+                        results.getString(3), results.getString(4), results.getString(5));
+                System.out.println(temp);
+                userHistoryList.add(temp);
+
+                return userHistoryList;
+
+            }
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
 
     public static int verifyLogin(String email, String password) {
 
@@ -150,7 +194,7 @@ public class DAO {
             String passEncrypted = enc.encryptPassword(password);
 
             String addCustomerCommand = "INSERT INTO userinfo " +
-                    "(FirstName, LastName, email, phoneNumber,Company, " +
+                    "(FirstName, LastName, email, phoneNumber, Company, " +
                     "gender, passEncrypted, profilePicture) " +
                     "VALUES ('" +
                     FirstName + "', '" +

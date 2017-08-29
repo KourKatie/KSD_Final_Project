@@ -13,26 +13,24 @@ public class userProfile {
     private String Company;
     private String gender;
 
-
-    public userProfile(String profilePicture, String firstName, String lastName, String email, String phoneNumber, String company, String gender ) {
+    public userProfile(String profilePicture, String firstName, String lastName, String email, String phoneNumber, String company, String gender) {
         this.profilePicture = profilePicture;
-        this.FirstName = firstName;
-        this.LastName = lastName;
+        FirstName = firstName;
+        LastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.Company = company;
+        Company = company;
         this.gender = gender;
-
     }
 
     public String getProfilePicture() {
         return profilePicture;
+
     }
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
-
 
     public String getFirstName() {
         return FirstName;
@@ -81,4 +79,5 @@ public class userProfile {
     public void setGender(String gender) {
         this.gender = gender;
     }
-}
+    }
+

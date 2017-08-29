@@ -1,19 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: Katie
-  Date: 8/25/2017
-  Time: 1:52 PM
+  Date: 8/29/2017
+  Time: 1:28 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Verify Login</title>
+    <title>Account Exists</title>
 </head>
 <body>
-
-${email}
-${password}
-
+There is already an account associated with that email. Please try logging in.
 </body>
 </html>

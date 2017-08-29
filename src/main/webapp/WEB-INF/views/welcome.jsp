@@ -3,7 +3,8 @@
 <head>
     <title>HOMEPAGE</title>
     <link href="/resources/css/SignUpLogIn.css" rel="stylesheet">
-    <link href="/resources/CSS/carousel.css" rel="stylesheet">
+    <%--<link href="/resources/CSS/carousel.css" rel="stylesheet">--%>
+
 
     <script src="https://ucarecdn.com/libs/widget/3.1.2/uploadcare.full.min.js" charset="utf-8"></script>
 
@@ -16,15 +17,15 @@
 <body>
 
 
-<h1 align = "center">MOGO BUDDY</h1>
+<h1 align = "center">MoGo With Me</h1>
 
 <h2>About Us</h2>
 
 <p class="aboutus">
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    MoGo Provided the Bikes. We’re Providing the People.
+
+    Why ride alone when you can ride together? MoGo With Me connects MoGo cyclists together with a platform for requesting cyclists to join their ride so no cyclist has to ride alone. Sign up, create your route, and meet your MoGo buddy today!
+
 </p>
 
 <!-- SIGN UP BUTTON THAT HOLDS REGISTRATION BUTTON -->
@@ -67,7 +68,7 @@
             <br/>
 
             Please Upload A Picture:
-            <input type="hidden" role="uploadcare-uploader" name="profilePicture" />
+            <input type="hidden" role="uploadcare-uploader" name="profilePicture"/>
 
 
             <input type="checkbox" checked="checked"> Remember me

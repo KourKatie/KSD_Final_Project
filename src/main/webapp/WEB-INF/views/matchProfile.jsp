@@ -11,6 +11,12 @@
 <head>
     <title>Match Profile</title>
 </head>
+
+            <h1 align="center">
+                MoGo With Me
+            </h1>
+
+
 <body align="center">
 
 <c:forEach items="${updata}" var="item">
