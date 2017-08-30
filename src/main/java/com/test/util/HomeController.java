@@ -71,6 +71,22 @@ public class HomeController {
 
     }
 
+
+    @RequestMapping(value = "/getAllRequests")
+    public ModelAndView getAllRequests (
+            @RequestParam("UserId") int UserId
+
+    ) {
+
+        ArrayList<allRequests> allRequestList = DAO.getAllRequests();
+        ModelAndView mv = new ModelAndView("allRequests", "ardata", allRequestList);
+        mv.addObject("UserId", UserId);
+
+        return mv;
+
+    }
+
+
     @RequestMapping(value = "/addCustomer")
     public ModelAndView addCustomer(
             @RequestParam("FirstName") String FirstName,

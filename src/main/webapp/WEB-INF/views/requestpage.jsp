@@ -8,17 +8,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+
     <title>Request Page</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Varela');
+        /*body {*/
+            /*font-family: 'Varela', sans-serif;*/
+            /*font-size: 18px;*/
+        /*}*/
+        h1 {
+            font-family: 'Varela', sans-serif;
+            font-size: 40px;
+            color: black;
+        }
+    </style>
 </head>
 <body>
 
-            <h1 align="center">
-                MoGo With Me</h1>
+<h1 align="center">MoGo With Me</h1>
 
 <p></p><form action="/getUserProfile" align="left">
     <input type="submit" name="submit" value="Profile">
     <input type="hidden" name="UserId" value="${UserId}">
 </form>
+
+<form action="/getAllRequests"><input type="submit" name="submit" value="View All Requests">
+    <input type="hidden" name="UserId" value="${UserId}"></form> or Add Your Request
+
 <form action="/addRequest">
     <input type="hidden" name="UserId" value="${UserId}">
 
