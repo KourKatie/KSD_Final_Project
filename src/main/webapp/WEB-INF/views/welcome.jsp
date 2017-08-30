@@ -11,6 +11,18 @@
     <script>
         UPLOADCARE_PUBLIC_KEY = 'e71a6ed89f8acaed4d28';
     </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Varela');
+        body {
+            font-family: 'Varela', sans-serif;
+            font-size: 18px;
+        }
+        h1 {
+            font-family: 'Varela', sans-serif;
+            font-size: 40px;
+            color: black;
+        }
+    </style>
 
 
 </head>
@@ -19,13 +31,14 @@
 
 <h1 align = "center">MoGo With Me</h1>
 
+<image class="image" src="/resources/images/bike.jpg"></image>
 <h2>About Us</h2>
-
 <p class="aboutus">
-    MoGo Provided the Bikes. We’re Providing the People.
 
-    Why ride alone when you can ride together? MoGo With Me connects MoGo cyclists together with a platform for requesting cyclists to join their ride so no cyclist has to ride alone. Sign up, create your route, and meet your MoGo buddy today!
+    <u>MoGo Provided the Bikes. We’re Providing the People.</u> <br>
+    <br>
 
+Why ride alone when you can ride together? MoGo With Me connects MoGo cyclists together with a platform for requesting cyclists to join their ride so no cyclist has to ride alone. Sign up, create your route, and meet your MoGo buddy today!
 </p>
 
 <!-- SIGN UP BUTTON THAT HOLDS REGISTRATION BUTTON -->
@@ -41,19 +54,19 @@
     <form class="modal-content animate" action="/addCustomer">
         <div class="container">
             <label><b>First Name</b></label>
-            <input type="text" placeholder="Enter First Name" name="FirstName" required>
+            <input type="text" placeholder="Amanda" name="FirstName" required>
 
             <label><b>Last Name</b></label>
-            <input type="text" placeholder="Enter Last Name" name="LastName" required>
+            <input type="text" placeholder="Williams" name="LastName" required>
 
             <label><b>E-Mail</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+            <input type="text" placeholder="amanda.williams@gmail.com" name="email" required>
 
             <label><b>Phone Number</b></label>
-            <input type="text" placeholder="Enter Phone Number" name="phoneNumber" required>
+            <input type="text" placeholder="15554443333" name="phoneNumber" required>
 
             <label><b>Company</b></label>
-            <input type="text" placeholder="Enter Company" name="Company" required>
+            <input type="text" placeholder="General Motors" name="Company" required>
 
             <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" required>
@@ -69,10 +82,6 @@
 
             Please Upload A Picture:
             <input type="hidden" role="uploadcare-uploader" name="profilePicture"/>
-
-
-            <input type="checkbox" checked="checked"> Remember me
-            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
             <div class = "clearfix">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
@@ -92,28 +101,24 @@
 <div id = "id02" class="modal">
     <span onclick="document.getElementById('id02').style.display = 'none'" class="close" title = "Close Modal">x</span>
 
-    <!-- Adds Avatar/User Picture to form -->
     <form class="modal-content animate" action = "/verifylogin">
-        <div class="imgcontainer"><img src="resources/images/female.png" alt="Avatar" class="avatar"></div>
 
-
-        <div class="container" style="background-color: #f1f1f1">
+        <div class="container">
             <label> <b>E-Mail</b></label>
-            <input type="text" placeholder="Enter E-Mail" name="email" required>
+            <input type="text" placeholder="amanda.williams@gmail.com" name="email" required>
 
             <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password"required>
 
             <button type="submit">Log In</button>
-            <input type="checkbox" checked="checked">Remember Me</div>
-
 
         <div class="clearfix">
             <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtntwo">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
         </div>
     </form>
 </div>
+
 
 </body>
 </html>

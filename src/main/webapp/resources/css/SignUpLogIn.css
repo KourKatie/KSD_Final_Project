@@ -10,6 +10,27 @@ input[type=text], input[type=password]
 }
 
 /* The Modal (background) */
+
+.image {
+
+    height: 65%;
+    width: 55%;
+    float: Right;
+    margin-top: 3em;
+    margin-right: 0px;
+}
+
+h2 {
+    margin-left: 4em;
+}
+/*body {*/
+    /*background-image: url("/resources/images/bike.jpg");*/
+    /*margin-top: 4em;*/
+    /*background-size: 100%;*/
+    /*position: absolute;*/
+    /*z-index: -5;*/
+/*}*/
+
 .modal
 {
     display: none; /* Hidden by default */
@@ -30,11 +51,12 @@ input[type=text], input[type=password]
 /* Set a style for all buttons */
 button
 {
-    background-color: #4CAF50;
-    color: white;
+    background-color: white;
+    border-radius: 12px;
+    color: black;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
+    border: 2px solid #EE382A;
     cursor: pointer;
     width: 100%;
 }
@@ -43,9 +65,10 @@ button
 
 .onscreensignup, .onscreenlogin
 {
+
     width: 10%;
     float: left;
-    margin: 25px;
+    margin: 10px 25px 10px 25px;
 }
 
 
@@ -53,7 +76,7 @@ button
 .cancelbtn
 {
     padding: 14px 20px;
-    background-color: #f44336;
+    background-color: #EE382A;
 }
 
 .cancelbtntwo
@@ -61,7 +84,7 @@ button
 
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: #EE382A;
 
 
 }
@@ -104,7 +127,7 @@ button
 .close:hover,
 .close:focus
 {
-    color: red;
+    color: #EE382A;
     cursor: pointer;
 }
 
@@ -133,9 +156,18 @@ span.psw
 
 .aboutus
 {
-    width: 25em;
-    border: 1px solid #000000;
+    background-color: white;
+    width: 20em;
+    height: 15em;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    padding-left: 3em;
+    padding-right: 3em;
+    border: 3px solid #EE382A;
     word-wrap: normal;
+    margin-left: 2em;
+    margin-top: 1em;
+    border-radius: 12px;
 }
 
 /* Center the image and position the close button */
@@ -144,12 +176,6 @@ span.psw
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
-}
-
-img.avatar
-{
-    width: 40%;
-    border-radius: 50%;
 }
 
 /* Animation for Log In Button */

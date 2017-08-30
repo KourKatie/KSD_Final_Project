@@ -164,7 +164,7 @@ public class HomeController {
 
             Message message = Message.creator(new PhoneNumber("+" + phoneNumber),
                     new PhoneNumber("+18305005414"),
-                    userFirstName + " " + userLastName + " has matched with you! You may contact them at " + userPhoneNumber).create();
+                    userFirstName + " " + userLastName + " has requested to ride with you. You may contact them at " + userPhoneNumber).create();
 
             System.out.println(message.getSid());
 
