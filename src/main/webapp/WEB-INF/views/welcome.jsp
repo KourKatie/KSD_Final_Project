@@ -20,18 +20,18 @@
         h1 {
             font-family: 'Varela', sans-serif;
             font-size: 40px;
-            color: black;
+            color: #EE382A;
         }
     </style>
 
 
 </head>
-<body>
+<body background="resources/images/bike.jpg">
 
 
 <h1 align = "center">MoGo With Me</h1>
 
-<image class="image" src="/resources/images/bike.jpg"></image>
+<%--<image class="image" src="/resources/images/bike.jpg"></image>--%>
 <h2>About Us</h2>
 <p class="aboutus">
 

@@ -10,32 +10,43 @@
 <html>
 <head>
     <title>User Profile</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Varela');
+        body {
+            font-family: 'Varela', sans-serif;
+            font-size: 25px;
+        }
+    </style>
+
+    <link href="/resources/css/profiles.css" rel="stylesheet">
 </head>
+
 <body>
 
-<h1 align="center">Mogo With Me</h1>
 
-<h3 align="center">User Profile</h3>
+<h1 align="center">MoGo With Me</h1>
 
-<div align="center">
+<h2 align="center">Profile Information</h2>
 
-    <c:forEach items="${ppdata}" var="item">
+<c:forEach items="${ppdata}" var="item">
 
-        <img src= "${item.profilePicture}" width="250" height="250"> <br />
-        First Name: ${item.firstName} <br>
-        Last Name: ${item.lastName} <br>
-        Email: ${item.email} <br>
-        PhoneNumber: ${item.phoneNumber}<br>
-        Company: ${item.company} <br>
-        Gender: ${item.gender} <br>
-        <p></p>
+<div class="post-container" >
 
+    <div class="post-thumb"><img src= "${item.profilePicture}" width="375" height="375"></div>
+    <div class="post-content">
+        <p>First Name: ${item.firstName} </p>
+        <p>Last Name: ${item.lastName} </p>
+        <p>Email: ${item.email} </p>
+        <p>PhoneNumber: ${item.phoneNumber} </p>
+        <p>Company: ${item.company}</p>
+        <p>Gender: ${item.gender} </p>
+
+        <form action="/viewHistory">
+            <input type="submit" name="submit" value="View History">
+            <input type="hidden" name="UserId" value="${UserId}">
+        </form>
+    </div>
     </c:forEach>
-
-    <form action="/viewHistory">
-    <input type="submit" name="submit" value="View History">
-        <input type="hidden" name="UserId" value="${UserId}">
-    </form>
 
 </div>
 

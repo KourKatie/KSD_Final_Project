@@ -1,0 +1,35 @@
+.post-container div{
+    margin: 5px 250px 0;
+    border: 5px solid red;
+    overflow: visible;
+
+}
+.post-thumb {
+    float: left;
+    margin: auto;
+}
+.post-thumb img div{
+    display: block;
+    margin: auto;
+}
+.post-content {
+    margin-left: 210px;
+    margin-right: 210px;
+}
+.post-title {
+    font-weight: bold;
+    font-size: 200%;
+}
+
+.center {
+    text-align: center;
+    border: 3px red;
+}
+
+div {
+    margin: auto;
+}
+
+img {
+    margin: 15px 5px 15px 5px;
+}

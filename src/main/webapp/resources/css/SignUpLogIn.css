@@ -22,6 +22,7 @@ input[type=text], input[type=password]
 
 h2 {
     margin-left: 4em;
+    color:#EE382A;
 }
 /*body {*/
     /*background-image: url("/resources/images/bike.jpg");*/
@@ -198,4 +199,12 @@ span.psw
     from {transform: scale(0)}
     to {transform: scale(1)}
 }
+
+body {
+    background-size: cover
+}
+
+
+
+
 

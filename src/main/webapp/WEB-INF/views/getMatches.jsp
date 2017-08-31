@@ -17,7 +17,7 @@
         <th>First Name</th>
         <th>Gender</th>
         <th>Company</th>
-        <th>message</th>
+        <th>Message</th>
     </tr>
     <c:forEach items="${mdata}" var="item">
         <tr>

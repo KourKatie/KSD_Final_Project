@@ -22,6 +22,7 @@
             font-size: 40px;
             color: black;
         }
+
     </style>
 </head>
 <body>
@@ -145,7 +146,7 @@
     <input type="submit" value="Add Request">
 </form>
 
-<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OgcE4Jko7Qw8604Mo_Mi-NarUQw" width="1200" height="780"></iframe>
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OgcE4Jko7Qw8604Mo_Mi-NarUQw" width="1200" height="780" ></iframe>
 
 </body>
 </html>

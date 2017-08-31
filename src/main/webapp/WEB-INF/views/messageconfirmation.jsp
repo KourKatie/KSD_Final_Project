@@ -13,6 +13,7 @@
 <body>
 
 You've successfully messaged your Mogo buddy!
+They have your contact information and will contact you.
 
 </body>
 </html>

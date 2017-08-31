@@ -10,23 +10,41 @@
 <html>
 <head>
     <title>Match Profile</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Varela');
+        body {
+            font-family: 'Varela', sans-serif;
+            font-size: 25px;
+        }
+    </style>
+
+    <link href="/resources/css/profiles.css" rel="stylesheet">
 </head>
 
-            <h1 align="center">
-                MoGo With Me
-            </h1>
+<h1 align="center">
+    MoGo With Me
+</h1>
 
 
-<body align="center">
+<body>
 
 <c:forEach items="${updata}" var="item">
+<div class="post-container" >
 
-    <img src= "${item.profilePicture}" width="250" height="250"> <br />
-    First Name: ${item.firstName} <br>
-    Last Name: ${item.lastName} <br>
-    Company: ${item.company} <br>
-    Gender: ${item.gender} <br>
-</c:forEach>
+    <div class="post-thumb"><img src= "${item.profilePicture}" width="200" height="217"></div>
+    <div class="post-content">
+
+        <p>First Name: ${item.firstName} </p>
+        <p>Last Name: ${item.lastName} </p>
+        <p>Company: ${item.company}</p>
+        <p>Gender: ${item.gender} </p>
+
+    </div>
+    </c:forEach>
+
+</div>
 
 </body>
 </html>
+

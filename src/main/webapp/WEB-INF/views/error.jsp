@@ -11,6 +11,9 @@
     <title>Error</title>
 </head>
 <body>
-Incorrect Login Credentials
+Incorrect Login Credentials <br />
+<form action="/">
+    <input type="submit" value="Home" />
+</form>
 </body>
 </html>

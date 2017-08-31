@@ -10,6 +10,16 @@
 <html>
 <head>
     <title>All Requests</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Varela');
+        body {
+            font-family: 'Varela', sans-serif;
+            font-size: 15px;
+        }
+    </style>
+
+    <link href="/resources/css/matches.css" rel="stylesheet">
 </head>
 <body>
 <h1 align="center">MoGo With Me</h1>
@@ -19,12 +29,12 @@
         <th>Profile</th>
         <th>Name</th>
         <th>Company</th>
-        <th>gender</th>
+        <th>Gender</th>
         <th>Departure Station</th>
         <th>Arrival Station </th>
         <th>Date</th>
         <th>Time</th>
-        <th>message</th>
+        <th>Message</th>
         <th>Request</th>
     </tr>
 
