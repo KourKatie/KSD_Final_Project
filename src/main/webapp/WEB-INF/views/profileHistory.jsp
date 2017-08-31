@@ -10,9 +10,16 @@
 <html>
 <head>
     <title>Profile History</title>
+    <srcipt>
+        h1 {
+        font-family: 'Varela', sans-serif;
+        font-size: 40px;
+        color: black;
+        }
+    </srcipt>
 </head>
 <body>
-<h1 align="center">Mogo With Me</h1>
+<h1 align="center">MoGo With Me</h1>
 
 <h3 align="center">User History</h3>
 

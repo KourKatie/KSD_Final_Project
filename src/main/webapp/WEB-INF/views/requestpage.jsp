@@ -24,12 +24,13 @@
         }
 
     </style>
+    <link href="/resources/css/requeststyle.css" rel="stylesheet">
 </head>
 <body>
 
 <h1 align="center">MoGo With Me</h1>
 
-<p></p><form action="/getUserProfile" align="left">
+<p></p><form action="/getUserProfile">
     <input type="submit" name="submit" value="Profile">
     <input type="hidden" name="UserId" value="${UserId}">
 </form>
@@ -39,6 +40,7 @@
 
 <form action="/addRequest">
     <input type="hidden" name="UserId" value="${UserId}">
+    <div align="center">
 
     Departure Station: <select name="departure">
     <option value="E Bethune St & Brush St" name="E Bethune St & Brush St">E Bethune St & Brush St</option>
@@ -130,7 +132,7 @@
     <option value="Jefferson Ave & Beaubien St" name="Jefferson Ave & Beaubien St">Jefferson Ave & Beaubien St</option>
     <option value="Ren Cen Plaza & Detroit Riverwalk" name="Ren Cen Plaza & Detroit Riverwalk">Ren Cen Plaza & Detroit Riverwalk</option>
     <option value="Monroe Ave & Campus Martius" name="Monroe Ave & Campus Martius">Monroe Ave & Campus Martius</option>
-    </select>
+    </select> <br>
 
     Time: <select name="time">
     <option value="morning">Morning</option>
@@ -141,12 +143,14 @@
     Frequency: <select name="frequency">
     <option value="one time">one time</option>
 </select>
-    (Be more specific about your trip, add a message) <input type="text" name="message">
-    <!--<form action="/matches">-->
+    <br>
+
+    (Be more specific about your trip, add a message) <input type="text" name="message"> <br>
     <input type="submit" value="Add Request">
+    </div>
 </form>
 
-<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OgcE4Jko7Qw8604Mo_Mi-NarUQw" width="1200" height="780" ></iframe>
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1OgcE4Jko7Qw8604Mo_Mi-NarUQw" width="100%" height="65%" ></iframe>
 
 </body>
 </html>

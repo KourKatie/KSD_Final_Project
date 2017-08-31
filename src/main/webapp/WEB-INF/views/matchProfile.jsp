@@ -17,6 +17,11 @@
             font-family: 'Varela', sans-serif;
             font-size: 25px;
         }
+        h1 {
+            font-family: 'Varela', sans-serif;
+            font-size: 40px;
+            color: black;
+        }
     </style>
 
     <link href="/resources/css/profiles.css" rel="stylesheet">
