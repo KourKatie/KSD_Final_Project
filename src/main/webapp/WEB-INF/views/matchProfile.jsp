@@ -29,18 +29,17 @@
 
 <body>
 
+<div>
 <c:forEach items="${updata}" var="item">
-<div class="post-container" >
 
-    <div class="post-thumb"><img src= "${item.profilePicture}" width="200" height="217"></div>
-    <div class="post-content">
+
+    <img src= "${item.profilePicture}" width="200" height="217">
 
         <p>First Name: ${item.firstName} </p>
         <p>Last Name: ${item.lastName} </p>
         <p>Company: ${item.company}</p>
         <p>Gender: ${item.gender} </p>
 
-    </div>
     </c:forEach>
 
 </div>

@@ -24,12 +24,12 @@
         }
     </style>
 
-
 </head>
 <body background="resources/images/bike.jpg">
 
-
-<h1 align = "center">MoGo With Me</h1>
+<div class="company">
+<h1 align="center">MoGo With Me</h1>
+</div>
 
 <%--<image class="image" src="/resources/images/bike.jpg"></image>--%>
 <h2>About Us</h2>

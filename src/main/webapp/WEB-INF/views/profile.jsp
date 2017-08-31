@@ -28,12 +28,11 @@
 
 <h2 align="center">Profile Information</h2>
 
+<div>
+
 <c:forEach items="${ppdata}" var="item">
 
-<div class="post-container" >
-
-    <div class="post-thumb"><img src= "${item.profilePicture}" width="375" height="375"></div>
-    <div class="post-content">
+    <img src= "${item.profilePicture}" width="375" height="375">
         <p>First Name: ${item.firstName} </p>
         <p>Last Name: ${item.lastName} </p>
         <p>Email: ${item.email} </p>
@@ -45,10 +44,10 @@
             <input type="submit" name="submit" value="View History">
             <input type="hidden" name="UserId" value="${UserId}">
         </form>
-    </div>
+
     </c:forEach>
 
-</div>
+    </div>
 
 </body>
 </html>
